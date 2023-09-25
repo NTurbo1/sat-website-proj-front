@@ -1,8 +1,11 @@
 import React from "react";
 import { useState } from "react"
 import jwtDecode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+
+    const navigate = useNavigate()
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -10,50 +13,50 @@ const LoginPage = () => {
     const handleUsernameChange = (event) => {
         const usernameValue = event.target.value;
         setUsername(usernameValue);
-        console.log("Username: " + username)
     }
 
     const handlePasswordChange = (event) => {
         const passwordValue = event.target.value;
-        setPassword(passwordValue);
-        console.log("Password: " + password);
+        setPassword(passwordValue);;
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
-        const response = await fetch(
-            "http://localhost:8080/api/v1/auth/authenticate",
-            {
-            method: "POST", 
-            body: JSON.stringify({
-                email: username,
-                password: password
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
+            const response = await fetch(
+                "http://localhost:8080/api/v1/auth/authenticate",
+                {
+                method: "POST", 
+                body: JSON.stringify({
+                    email: username,
+                    password: password
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+                }
+            );
+        
+            if (response.ok) {
+                const data = await response.json();
+                const decodedToken = jwtDecode(data.token);
+                const roles = decodedToken.roles;
+                console.log("Roles: " + roles);
+                localStorage.setItem("jwtToken", data.token);
+                console.log("JWT: " + data.token);
+                
+            } else {
+                console.error("Failed to authenticate:", response.statusText);
             }
-        );
-    
-        if (response.ok) {
-            const data = await response.json();
-            const decodedToken = jwtDecode(data.token);
-            const roles = decodedToken.roles;
-            console.log("Roles: " + roles);
-            localStorage.setItem("jwtToken", data.token);
-            console.log("JWT: " + data.token);
-            
-        } else {
-            console.error("Failed to authenticate:", response.statusText);
-        }
 
-        setUsername("");
-        setPassword("");
+            setUsername("");
+            setPassword("");
+
+            navigate('/')
 
         } catch (error) {
-        console.error("An error occurred:", error);
+            console.error("An error occurred:", error);
         }
     }
 
