@@ -1,6 +1,6 @@
 import React from "react";
-
 import { useState } from "react";
+import { apiEndpoints } from "../utils/apiEndpoints";
 
 const RegisterPage = () => {
 
@@ -40,7 +40,7 @@ const RegisterPage = () => {
 
         try {
             const response = await fetch(
-                "http://localhost:8080/api/v1/auth/register",
+                apiEndpoints.register,
                 {
                     method: "POST", 
                     body: JSON.stringify({

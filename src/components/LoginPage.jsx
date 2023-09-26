@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react"
 import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { apiEndpoints } from "../utils/apiEndpoints";
 
 const LoginPage = () => {
 
@@ -22,19 +23,20 @@ const LoginPage = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log("Submitted!!!");
 
         try {
             const response = await fetch(
-                "http://localhost:8080/api/v1/auth/authenticate",
+                apiEndpoints.authenticate,
                 {
-                method: "POST", 
-                body: JSON.stringify({
-                    email: username,
-                    password: password
-                }),
-                headers: {
-                    'Content-type': 'application/json; charset=UTF-8',
-                },
+                    method: "POST", 
+                    body: JSON.stringify({
+                        email: username,
+                        password: password
+                    }),
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                    },
                 }
             );
         

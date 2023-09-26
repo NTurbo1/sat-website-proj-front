@@ -1,9 +1,9 @@
-import App from './App'
-import AboutPage from './components/AboutPage'
-import ContactsPage from './components/ContactsPage'
-import ServicesPage from './components/ServicesPage'
-import LoginPage from './components/LoginPage'
-import RegisterPage from './components/RegisterPage'
+import App from '../App'
+import AboutPage from '../components/AboutPage'
+import ContactsPage from '../components/ContactsPage'
+import ServicesPage from '../components/ServicesPage'
+import LoginPage from '../components/LoginPage'
+import RegisterPage from '../components/RegisterPage'
 import { createBrowserRouter } from 'react-router-dom'
 
 const router = createBrowserRouter([
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
         path: 'register',
         element: <RegisterPage />
     }
-])
+], {basename: "/sat-website-proj-front"})
 
 
 export {
