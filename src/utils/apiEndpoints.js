@@ -1,4 +1,4 @@
-const apiDomain = "https://6966-185-177-124-224.ngrok-free.app"
+const apiDomain = "http://localhost:8080"
 const apiRoot = apiDomain + "/api/v1"
 const apiAuthRoot = apiRoot + "/auth"
 

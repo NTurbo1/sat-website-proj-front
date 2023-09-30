@@ -10,6 +10,7 @@ const LoginPage = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [userLoggedIn, setUserLoggedIn] = useState(true)
 
     const handleUsernameChange = (event) => {
         const usernameValue = event.target.value;
@@ -47,15 +48,15 @@ const LoginPage = () => {
                 console.log("Roles: " + roles);
                 localStorage.setItem("jwtToken", data.token);
                 console.log("JWT: " + data.token);
+                setUsername("");
+                setPassword("");
+
+                navigate('/')
                 
             } else {
+                setUserLoggedIn(false)
                 console.error("Failed to authenticate:", response.statusText);
             }
-
-            setUsername("");
-            setPassword("");
-
-            navigate('/')
 
         } catch (error) {
             console.error("An error occurred:", error);
@@ -65,6 +66,15 @@ const LoginPage = () => {
 
     return (
         <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center gap-8">
+        
+        {
+            !userLoggedIn 
+                && 
+            <div className="flex justify-center items-center bg-red-300 p-5 rounded-lg">
+                <span>Your username or password is INCORRECT!</span>
+            </div>
+        }
+
         <span className="text-3xl">Login</span>
 
         <form className="bg-white p-8 rounded shadow-md">
@@ -86,18 +96,6 @@ const LoginPage = () => {
                 type="password" 
             />
             </div>
-
-            {/* <div className="mb-4">
-            <label htmlFor="roles" className="block text-gray-600 font-semibold">Roles</label>
-                <select id="roles" 
-                        onChange={handleRoleChange}
-                        className="w-full border rounded py-2 px-3 text-gray-700 focus:outline-none focus:border-blue-400"
-                >
-                <option value={""} disabled selected>Select your role</option>
-                <option value={"STUDENT"}>Student</option>
-                <option value={"INSTRUCTOR"}>Instructor</option>
-                </select>
-            </div> */}
 
             <div className="text-center">
             <button type="submit" 
