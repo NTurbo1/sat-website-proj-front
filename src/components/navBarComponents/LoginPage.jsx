@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { useState } from "react"
 import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { apiEndpoints } from "../utils/apiEndpoints";
-import { StateContext } from "../App";
+import { apiEndpoints } from "../../utils/apiEndpoints";
+import { StateContext } from "../../App";
 
 const LoginPage = () => {
 
@@ -27,6 +27,7 @@ const LoginPage = () => {
 
   const handleSubmit = async (event) => {
       event.preventDefault();
+      // for debugging
       console.log("Submitted!!!");
 
       try {

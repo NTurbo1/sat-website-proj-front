@@ -8,7 +8,7 @@ export const StateContext = createContext()
 
 function App() {
 
-  const [isLoggedIn, setLoggedIn] = useState(false)
+  const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem("jwtToken") !== null)
 
   return (
     <StateContext.Provider value={{

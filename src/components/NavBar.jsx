@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import DropdownMenu from "./DropdownMenu"
+import DropdownMenu from "./navBarComponents/DropdownMenu"
 import { Link } from "react-router-dom";
 import { StateContext } from "../App";
+import ProfileDropDown from "./navBarComponents/ProfileDropDown";
 
 const NavBar = ({ titleText, logoImg }) => {
 
@@ -12,12 +13,6 @@ const NavBar = ({ titleText, logoImg }) => {
   // const isLoggedIn = localStorage.getItem("jwtToken") != null
 
   const navLinkClassName = 'text-white text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-red-700 focus:ring-white'
-
-
-  const handleLogout = () => {
-    setLoggedIn(false)
-    localStorage.removeItem('jwtToken')
-  }
 
   return (
     <div className="bg-red-700 grow-0">
@@ -31,13 +26,6 @@ const NavBar = ({ titleText, logoImg }) => {
         </div>
 
         <div className="space-x-6">
-
-          {
-            isLoggedIn &&
-            <span className="text-white text-lg">
-              {`${localStorage.getItem('firstName')} ${localStorage.getItem('lastName')}`}
-            </span>
-          }
 
           <Link to="/" className={navLinkClassName}>
               Home
@@ -67,12 +55,7 @@ const NavBar = ({ titleText, logoImg }) => {
           <DropdownMenu />
 
           { isLoggedIn &&
-            <button 
-              onClick={handleLogout}
-              className="text-white text-sm"
-            >
-              Log out
-            </button>
+            <ProfileDropDown />
           }
         </div>
         </div>

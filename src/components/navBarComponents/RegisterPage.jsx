@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { apiEndpoints } from "../utils/apiEndpoints";
-import NavBar from "./NavBar";
-import { navBarTitleText, registrationState } from "../utils/constants";
+import { apiEndpoints } from "../../utils/apiEndpoints";
+import NavBar from "../NavBar";
+import { navBarTitleText, registrationState } from "../../utils/constants";
 import { Link } from "react-router-dom";
 
 const RegisterPage = () => {

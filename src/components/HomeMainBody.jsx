@@ -1,14 +1,13 @@
 import React from 'react'
+import HomeMainBodyBgImage from '/images/young-friends-park.jpg'
 
 const HomeMainBody = () => {
-
-  const bgImageUrl = "/src/images/young-friends-park.jpg"
 
   return (
     <div
       className="relative bg-cover bg-center py-40 text-white text-center grow"
       style={{
-        backgroundImage: `url(${bgImageUrl})`,
+        backgroundImage: `url(${HomeMainBodyBgImage})`,
       }}
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>

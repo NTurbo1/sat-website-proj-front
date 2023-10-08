@@ -1,9 +1,9 @@
 import App from '../App'
-import AboutPage from '../components/AboutPage'
-import ContactsPage from '../components/ContactsPage'
-import ServicesPage from '../components/ServicesPage'
-import LoginPage from '../components/LoginPage'
-import RegisterPage from '../components/RegisterPage'
+import AboutPage from '../components/navBarComponents/AboutPage'
+import ContactsPage from '../components/navBarComponents/ContactsPage'
+import ServicesPage from '../components/navBarComponents/ServicesPage'
+import LoginPage from '../components/navBarComponents/LoginPage'
+import RegisterPage from '../components/navBarComponents/RegisterPage'
 import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import IntroToSAT from '../components/courses/IntroToSAT'
 import SatMath from '../components/courses/SatMath'
@@ -70,7 +70,7 @@ const router = createBrowserRouter(
         <Route path='sat-writing' element={<SatWriting />}></Route>
       </Route>
     </Route>
-  )
+  ), { basename: "/sat-website-proj-front"}
 )
 
 export {
