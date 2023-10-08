@@ -10,52 +10,11 @@ import SatMath from '../components/courses/SatMath'
 import SatReading from '../components/courses/SatReading'
 import SatWriting from '../components/courses/SatWriting'
 import HomeMainBody from '../components/HomeMainBody'
+import PageNotFound from '../components/errorComponents/PageNotFound'
 
-// const router = createBrowserRouter([
-//     {
-//         path: '/',
-//         element: <App />
-//     },
-//     {
-//         path: '/about',
-//         element: <AboutPage />
-//     },
-//     {
-//         path: '/contacts',
-//         element: <ContactsPage />
-//     },
-//     {
-//         path: '/services',
-//         element: <ServicesPage />
-//     },
-//     {
-//         path: '/login',
-//         element: <LoginPage />
-//     },
-//     {
-//         path: '/register',
-//         element: <RegisterPage />
-//     },
-//     {
-//         path: '/introduction-to-sat',
-//         element: <IntroToSAT />
-//     },
-//     {
-//         path: '/courses/sat-math',
-//         element: <SatMath />
-//     },
-//     {
-//         path: '/courses/sat-reading',
-//         element: <SatReading />
-//     },
-//     {
-//         path: '/courses/sat-writing',
-//         element: <SatWriting />
-//     }
-//     ], {basename: "/"})
 
 const router = createBrowserRouter(
-  createRoutesFromElements(
+  createRoutesFromElements([
     <Route path='/' element={<App />}>
       <Route index element={<HomeMainBody />}></Route>
       <Route path='about' element={<AboutPage />}></Route>
@@ -69,7 +28,9 @@ const router = createBrowserRouter(
         <Route path='sat-reading' element={<SatReading />}></Route>
         <Route path='sat-writing' element={<SatWriting />}></Route>
       </Route>
+      <Route path='*' element={<PageNotFound />}></Route>
     </Route>
+  ]
   ), { basename: "/sat-website-proj-front"}
 )
 
