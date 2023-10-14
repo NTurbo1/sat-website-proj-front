@@ -1,14 +1,13 @@
-import React, { useContext } from "react";
-import { useState } from "react"
+import React, { useContext, useState } from "react";
 import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { apiEndpoints } from "../../utils/apiEndpoints";
-import { StateContext } from "../../App";
+import { AuthContext } from "../appContext/authContext";
 
 const LoginPage = () => {
 
-  const { loginState } = useContext(StateContext)
-  const [isLoggedIn, setLoggedIn] = loginState
+  const { setLoggedIn } = useContext(AuthContext)
+  console.log('setLoggedIn: ' + setLoggedIn);
   const [isAuthErrPopUpOpen, setAuthErrPopUpOpen] = useState(false)
   const navigate = useNavigate()
 
@@ -22,7 +21,7 @@ const LoginPage = () => {
 
   const handlePasswordChange = (event) => {
       const passwordValue = event.target.value;
-      setPassword(passwordValue);;
+      setPassword(passwordValue);
   }
 
   const handleSubmit = async (event) => {

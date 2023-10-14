@@ -1,17 +1,16 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import NavBar from '../NavBar'
 import { navBarTitleText } from '../../utils/constants'
 
 const PageNotFound = () => {
   return (
-    // <div className='flex flex-col min-h-screen'>
+    <div className='flex flex-col min-h-screen'>
+      <NavBar 
+        titleText={navBarTitleText}
+        logoImg={null}
+      />
 
-    //   <NavBar 
-    //     titleText={navBarTitleText}
-    //     logoImg={null}
-    //   />
-
-      <div className="flex items-center justify-center grow bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+      <div className="flex items-center justify-center grow bg-gradient-to-r from-blue-500 to-purple-500 text-white grow">
         <div className="text-center">
           <h1 className="text-6xl font-semibold mb-4">404</h1>
           <p className="text-2xl">Page Not Found</p>
@@ -24,7 +23,7 @@ const PageNotFound = () => {
           </button>
         </div>
       </div>
-    // </div>
+    </div>
   )
 }
 

@@ -1,28 +1,17 @@
-import { createContext, useState } from 'react'
 import './App.css'
-import NavBar from './components/NavBar'
-import { navBarTitleText } from './utils/constants'
-import { Outlet } from 'react-router-dom'
-
-export const StateContext = createContext()
+import { useState } from 'react'
+import { AuthContext } from './components/appContext/authContext';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './utils/router';
 
 function App() {
 
   const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem("jwtToken") !== null)
 
   return (
-    <StateContext.Provider value={{
-      loginState: [isLoggedIn, setLoggedIn]
-    }}>
-      <div className='flex flex-col min-h-screen'>
-          <NavBar 
-              titleText={navBarTitleText}
-              logoImg={null}
-          />
-
-          <Outlet />
-      </div>
-    </StateContext.Provider>
+    <AuthContext.Provider value={{isLoggedIn, setLoggedIn}}>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthContext.Provider>
   )
 }
 

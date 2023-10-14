@@ -1,21 +1,20 @@
 import React, { useContext } from "react";
-import DropdownMenu from "./navBarComponents/DropdownMenu"
+import DropdownMenu from "./navBarComponents/DropdownMenu";
 import { Link } from "react-router-dom";
-import { StateContext } from "../App";
 import ProfileDropDown from "./navBarComponents/ProfileDropDown";
+import pageUrls from "../utils/pageUrls";
+import { AuthContext } from "./appContext/authContext";
 
 const NavBar = ({ titleText, logoImg }) => {
 
-  const { loginState } = useContext(StateContext)
-  const [isLoggedIn, setLoggedIn] = loginState
-
-  // localStorage.removeItem("jwtToken")
-  // const isLoggedIn = localStorage.getItem("jwtToken") != null
+  const { isLoggedIn, setLoggedIn } = useContext(AuthContext)
+  console.log('NavBar isLoggedIn: ' + isLoggedIn);
+  console.log('NavBar setLoggedIn: ' + setLoggedIn);
 
   const navLinkClassName = 'text-white text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-red-700 focus:ring-white'
 
   return (
-    <div className="bg-red-700 grow-0">
+    <div className="bg-gray-800 grow-0">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
         <div className="flex items-center">
@@ -27,28 +26,28 @@ const NavBar = ({ titleText, logoImg }) => {
 
         <div className="space-x-6">
 
-          <Link to="/" className={navLinkClassName}>
+          <Link to={pageUrls.home} className={navLinkClassName}>
               Home
           </Link>
 
           {!isLoggedIn &&
             <>
-              <Link to="/login" className={navLinkClassName}>
+              <Link to={pageUrls.login} className={navLinkClassName}>
                   Sign in
               </Link>
-              <Link to="/register" className={navLinkClassName}>
+              <Link to={pageUrls.register} className={navLinkClassName}>
                   Sign up
               </Link> 
             </>
           }
 
-          <Link to="/services" className={navLinkClassName}>
+          <Link to={pageUrls.services} className={navLinkClassName}>
               Services
           </Link>
-          <Link to="/contacts" className={navLinkClassName}>
+          <Link to={pageUrls.contacts} className={navLinkClassName}>
               Contacts
           </Link>
-          <Link to="/about" className={navLinkClassName}>
+          <Link to={pageUrls.about} className={navLinkClassName}>
               About
           </Link>
           
