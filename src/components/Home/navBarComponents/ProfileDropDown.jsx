@@ -28,14 +28,15 @@ const ProfileDropDown = () => {
             type="button"
             className="text-white text-sm hover:text-gray-300 focus:outline-none focus:text-gray-300 flex items-center"
         >
-          <span className="text-white text-lg pr-2">
-            {`${localStorage.getItem('firstName')} ${localStorage.getItem('lastName')}`}
-          </span>
           <img
             src={defaultProfileImageBase64}
             alt="Profile"
             className="inline-block h-6 w-6 rounded-full"
           />
+
+          <span className="text-white text-lg pl-2">
+            {`${localStorage.getItem('firstName')} ${localStorage.getItem('lastName')}`}
+          </span>
         </button>
       </div>
 

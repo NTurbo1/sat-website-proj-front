@@ -39,10 +39,6 @@ const NavLinks = () => {
       </Link>
       
       <DropdownMenu />
-
-      { isLoggedIn &&
-        <ProfileDropDown />
-      }
     </div>
   )
 }

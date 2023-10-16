@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import jwtDecode from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { apiEndpoints } from "../../../utils/apiEndpoints";
 import { AuthContext } from "../../appContext/authContext";
 import { userRoles } from "../../../utils/constants";
@@ -8,8 +8,7 @@ import pageUrls from "../../../utils/pageUrls";
 
 const LoginPage = () => {
 
-  const { setLoggedIn } = useContext(AuthContext)
-  console.log('setLoggedIn: ' + setLoggedIn);
+  const { isLoggedIn, setLoggedIn } = useContext(AuthContext)
   const [isAuthErrPopUpOpen, setAuthErrPopUpOpen] = useState(false)
   const navigate = useNavigate()
 
@@ -85,7 +84,9 @@ const LoginPage = () => {
 
 
   return (
-
+    
+    isLoggedIn ? <Navigate to={pageUrls.home} />
+      :
     <div className="bg-gray-100 flex flex-col items-center justify-center gap-8 grow">
 
       {

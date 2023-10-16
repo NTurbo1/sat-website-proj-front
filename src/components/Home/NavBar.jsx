@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../appContext/authContext";
 import NavLinks from "./navBarComponents/NavLinks";
+import SocialMediaLinks from "./navBarComponents/SocialMediaLinks";
+import ProfileDropDown from './navBarComponents/ProfileDropDown';
 
 const NavBar = ({ titleText, logoImg }) => {
 
@@ -18,6 +20,12 @@ const NavBar = ({ titleText, logoImg }) => {
           </div>
 
           <NavLinks />
+
+          { isLoggedIn &&
+            <ProfileDropDown />
+          }
+
+          <SocialMediaLinks />
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ const AboutPage = () => {
     return (
       <div className="bg-gray-100 min-h-screen">
         <div className="max-w-screen-xl mx-auto p-6">
-          <h1 className="text-4xl font-bold mb-6">About Us</h1>
+          <h1 className="text-4xl font-bold mb-6">About Me</h1>
           <p className="text-gray-700 text-lg">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec libero vel erat placerat fermentum.
             Vivamus vehicula ipsum quis urna vehicula, ut volutpat nunc vehicula. Phasellus nec felis vitae
