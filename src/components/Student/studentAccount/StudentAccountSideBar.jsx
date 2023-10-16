@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { defaultProfileImageBase64 } from '../../utils/constants'
+import { defaultProfileImageBase64 } from '../../../utils/constants'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../appContext/authContext'
+import { AuthContext } from '../../appContext/authContext'
 
 const StudentAccountSideBar = () => {
 

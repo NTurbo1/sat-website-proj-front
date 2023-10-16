@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { apiEndpoints } from "../../utils/apiEndpoints";
-import NavBar from "../NavBar";
-import { navBarTitleText, registrationState } from "../../utils/constants";
+import { apiEndpoints } from "../../../utils/apiEndpoints";
+import { registrationState, userRoles } from "../../../utils/constants";
 import { Link } from "react-router-dom";
+import pageUrls from "../../../utils/pageUrls";
 
 const RegisterPage = () => {
 
@@ -89,7 +89,7 @@ const RegisterPage = () => {
       {
           isRegisterSuccess === registrationState.success ?
           <div className="flex justify-center items-center bg-green-300 p-5 rounded-lg">
-            <span>Your have been registered! Please, <Link to="/login" className="text-blue-700 hover:underline">log in</Link> now.</span>
+            <span>Your have been registered! Please, <Link to={pageUrls.login} className="text-blue-700 hover:underline">log in</Link> now.</span>
           </div>
             : isRegisterSuccess === registrationState.error ?
           <div className="flex justify-center items-center bg-red-300 p-5 rounded-lg">
@@ -147,8 +147,8 @@ const RegisterPage = () => {
                   className="w-full border rounded py-2 px-3 text-gray-700 focus:outline-none focus:border-blue-400"
           >
               <option value={""} disabled selected>Who are you?</option>
-              <option value={"STUDENT"}>Student</option>
-              <option value={"INSTRUCTOR"}>Instructor</option>
+              <option value={userRoles.student}>Student</option>
+              <option value={userRoles.admin}>Admin</option>
           </select>
         </div>
 

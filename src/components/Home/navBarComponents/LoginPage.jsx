@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
 import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { apiEndpoints } from "../../utils/apiEndpoints";
-import { AuthContext } from "../appContext/authContext";
+import { apiEndpoints } from "../../../utils/apiEndpoints";
+import { AuthContext } from "../../appContext/authContext";
+import { userRoles } from "../../../utils/constants";
+import pageUrls from "../../../utils/pageUrls";
 
 const LoginPage = () => {
 
@@ -65,7 +67,10 @@ const LoginPage = () => {
               setUsername("");
               setPassword("");
 
-              navigate('/')
+              if (localStorage.getItem("roles").includes(userRoles.admin)) 
+                navigate(pageUrls.adminAccount)
+              else
+                navigate(pageUrls.home)
               
           } else {
               setAuthErrPopUpOpen(true)

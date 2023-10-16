@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import DropdownMenu from "./navBarComponents/DropdownMenu";
+import DropdownMenu from './navBarComponents/DropdownMenu'
 import { Link } from "react-router-dom";
 import ProfileDropDown from "./navBarComponents/ProfileDropDown";
-import pageUrls from "../utils/pageUrls";
-import { AuthContext } from "./appContext/authContext";
+import pageUrls from "../../utils/pageUrls";
+import { AuthContext } from "../appContext/authContext";
 
 const NavBar = ({ titleText, logoImg }) => {
 
@@ -48,7 +48,7 @@ const NavBar = ({ titleText, logoImg }) => {
               Contacts
           </Link>
           <Link to={pageUrls.about} className={navLinkClassName}>
-              About
+              About me
           </Link>
           
           <DropdownMenu />

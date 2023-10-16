@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../NavBar'
+import NavBar from '../Home/NavBar'
 import { navBarTitleText } from '../../utils/constants'
 
 const PageNotFound = () => {

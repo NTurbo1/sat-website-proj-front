@@ -2,7 +2,7 @@ const navBarTitleText = "SAT Tutoring Website"
 
 const userRoles = {
   student: "STUDENT",
-  instructor: "INSTRUCTOR"
+  admin: "ADMIN"
 }
 
 const registrationState = {

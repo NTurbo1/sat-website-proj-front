@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { defaultProfileImageBase64, userRoles } from '../../utils/constants'
-import { AuthContext } from '../appContext/authContext'
+import { defaultProfileImageBase64, userRoles } from '../../../utils/constants'
+import { AuthContext } from '../../appContext/authContext'
+import pageUrls from '../../../utils/pageUrls'
 
 const ProfileDropDown = () => {
 
@@ -43,8 +44,8 @@ const ProfileDropDown = () => {
           <div className="py-2">
             <Link
                 to={
-                  localStorage.getItem('roles').includes(userRoles.student) ? '/student/account'
-                  : localStorage.getItem('roles').includes(userRoles.instructor) ? 'instructor/account'
+                  localStorage.getItem('roles').includes(userRoles.student) ? pageUrls.studentAccount
+                  : localStorage.getItem('roles').includes(userRoles.admin) ? pageUrls.adminAccount
                   : '#' // should be fixed later
                 }
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"

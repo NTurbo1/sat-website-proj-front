@@ -1,6 +1,6 @@
 import React from 'react'
 import NavBar from './NavBar'
-import { navBarTitleText } from '../utils/constants'
+import { navBarTitleText } from '../../utils/constants'
 import { Outlet } from 'react-router-dom'
 
 const Home = () => {

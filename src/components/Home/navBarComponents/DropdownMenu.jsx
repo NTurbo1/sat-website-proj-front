@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import pageUrls from '../../utils/pageUrls';
+import pageUrls from '../../../utils/pageUrls';
 
 const DropdownMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,7 @@ const DropdownMenu = () => {
                     type="button"
                     className="text-white text-sm hover:text-gray-300 focus:outline-none focus:text-gray-300"
                 >
-                    Courses
+                    SAT self-study
                     <svg
                         className={`ml-2 inline-block h-4 w-4 transition-transform transform ${
                             isOpen ? 'rotate-0' : 'rotate-180'

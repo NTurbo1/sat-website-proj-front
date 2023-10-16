@@ -13,7 +13,8 @@ const pageUrls = {
   studentAccount: "/student/account",
   mockTests: "/student/account/mock-tests",
   studentEnrolledCourses: "/student/account/courses",
-  studentProfile: "/student/account/profile"
+  studentProfile: "/student/account/profile",
+  adminAccount: "/admin/account"
 }
 
 export default pageUrls

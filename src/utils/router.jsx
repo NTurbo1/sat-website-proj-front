@@ -1,21 +1,22 @@
-import AboutPage from '../components/navBarComponents/AboutPage'
-import ContactsPage from '../components/navBarComponents/ContactsPage'
-import ServicesPage from '../components/navBarComponents/ServicesPage'
-import LoginPage from '../components/navBarComponents/LoginPage'
-import RegisterPage from '../components/navBarComponents/RegisterPage'
-import { Navigate, Route, Router, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import AboutPage from '../components/Home/navBarComponents/AboutPage'
+import ContactsPage from '../components/Home/navBarComponents/ContactsPage'
+import ServicesPage from '../components/Home/navBarComponents/ServicesPage'
+import LoginPage from '../components/Home/navBarComponents/LoginPage'
+import RegisterPage from '../components/Home/navBarComponents/RegisterPage'
+import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import IntroToSAT from '../components/courses/IntroToSAT'
 import SatMath from '../components/courses/SatMath'
 import SatReading from '../components/courses/SatReading'
 import SatWriting from '../components/courses/SatWriting'
-import HomeMainBody from '../components/HomeMainBody'
+import HomeMainBody from '../components/Home/HomeMain/HomeMainBody'
 import PageNotFound from '../components/errorComponents/PageNotFound'
-import StudentAccountPage from '../components/studentAccount/StudentAccountPage'
-import StudentAccountContent from '../components/studentAccount/StudentAccountContent'
-import MockTests from '../components/studentAccount/MockTests'
-import StudentCourses from '../components/studentAccount/StudentCourses'
-import StudentProfile from '../components/studentAccount/StudentProfile'
-import Home from '../components/Home'
+import StudentAccountPage from '../components/Student/studentAccount/StudentAccountPage'
+import StudentAccountContent from '../components/Student/studentAccount/StudentAccountContent'
+import MockTests from '../components/Student/studentAccount/MockTests'
+import StudentCourses from '../components/Student/studentAccount/StudentCourses'
+import StudentProfile from '../components/Student/studentAccount/StudentProfile'
+import Home from '../components/Home/Home'
+import AdminAccountPage from '../components/Admin/adminAccount/AdminAccountPage'
 
 
 const router = createBrowserRouter(
@@ -42,6 +43,8 @@ const router = createBrowserRouter(
       <Route path='courses' element={<StudentCourses />}></Route>
       <Route path='profile' element={<StudentProfile />}></Route>
     </Route>,
+
+    <Route path='/admin/account' element={<AdminAccountPage />}></Route>,
 
     <Route path='*' element={<PageNotFound />}></Route>
   ]

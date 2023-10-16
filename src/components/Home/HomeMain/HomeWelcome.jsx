@@ -1,11 +1,10 @@
 import React from 'react'
 import HomeMainBodyBgImage from '/images/young-friends-park.jpg'
 
-const HomeMainBody = () => {
-
+const HomeWelcome = () => {
   return (
     <div
-      className="relative bg-cover bg-center py-40 text-white text-center grow"
+      className="relative bg-cover bg-center py-40 text-white text-center"
       style={{
         backgroundImage: `url(${HomeMainBodyBgImage})`,
       }}
@@ -24,7 +23,7 @@ const HomeMainBody = () => {
         </a>
       </div>
     </div>
-  );
+  )
 }
 
-export default HomeMainBody
+export default HomeWelcome
