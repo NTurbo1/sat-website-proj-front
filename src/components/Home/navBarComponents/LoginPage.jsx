@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { apiEndpoints } from "../../../utils/apiEndpoints";
 import pageUrls from "../../../utils/pageUrls";
 import { useAuth } from "../../auth/authentication/AuthProvider";
@@ -7,55 +7,39 @@ import { useAuth } from "../../auth/authentication/AuthProvider";
 const LoginPage = () => {
 
   const { isLoggedIn, handleLogIn } = useAuth()
+
   const [isAuthErrPopUpOpen, setAuthErrPopUpOpen] = useState(false)
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  let authErrorText = "Your username or password is INCORRECT!"
+
   const handleUsernameChange = (event) => {
-      const usernameValue = event.target.value;
-      setUsername(usernameValue);
+    const usernameValue = event.target.value;
+    setUsername(usernameValue);
   }
 
   const handlePasswordChange = (event) => {
-      const passwordValue = event.target.value;
-      setPassword(passwordValue);
+    const passwordValue = event.target.value;
+    setPassword(passwordValue);
   }
 
   const handleSubmit = async (event) => {
-      event.preventDefault();
+    event.preventDefault();
 
-      try {
-          const response = await fetch(
-              apiEndpoints.authenticate,
-              {
-                  method: "POST", 
-                  body: JSON.stringify({
-                      email: username,
-                      password: password
-                  }),
-                  headers: {
-                      'Content-type': 'application/json; charset=UTF-8',
-                  },
-              }
-          );
-      
-          if (response.ok) {
-              const data = await response.json();
-
-              handleLogIn(data)
-              setAuthErrPopUpOpen(false)
-              setUsername("");
-              setPassword("");
-              
-          } else {
-              setAuthErrPopUpOpen(true)
-              console.error("Failed to authenticate:", response.statusText);
-          }
-
-      } catch (error) {
-          console.error("An error occurred:", error);
+    try {
+      const loginSuccess = await handleLogIn(username, password)
+      if (loginSuccess) {
+        setAuthErrPopUpOpen(true);
+        setUsername("");
+        setPassword("");
+      } else {
+        setAuthErrPopUpOpen(false);
       }
+    } catch (error) {
+      authErrorText = "An error happened in the server :("
+    }
   }
 
 
@@ -69,7 +53,7 @@ const LoginPage = () => {
           isAuthErrPopUpOpen 
               && 
           <div className="flex justify-center items-center bg-red-300 p-5 rounded-lg">
-              <span>Your username or password is INCORRECT!</span>
+              <span>{authErrorText}</span>
           </div>
       }
 

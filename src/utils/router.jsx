@@ -17,38 +17,8 @@ import StudentCourses from '../components/Student/studentAccount/StudentCourses'
 import StudentProfile from '../components/Student/studentAccount/StudentProfile'
 import Home from '../components/Home/Home'
 import AdminAccountPage from '../components/Admin/adminAccount/AdminAccountPage'
+import ProtectedRoute from '../components/auth/ProtectedRoute'
 
-
-// const routes = createRoutesFromElements(
-//   [
-//     <Route path='/' element={<Navigate to={"/home"} />} />,
-//     <Route path='home' element={<Home />}>
-//       <Route index element={<HomeMainBody />} />
-//       <Route path='about' element={<AboutPage />} />
-//       <Route path='contacts' element={<ContactsPage />} />
-//       <Route path='services' element={<ServicesPage />} />
-//       <Route path='login' element={<LoginPage />} />
-//       <Route path='register' element={<RegisterPage />} />
-//       <Route path='introduction-to-sat' element={<IntroToSAT />} />
-//       <Route path='courses'>
-//         <Route path='sat-math' element={<SatMath />} />
-//         <Route path='sat-reading' element={<SatReading />} />
-//         <Route path='sat-writing' element={<SatWriting />} />
-//       </Route>
-//     </Route>,
-
-//     <Route path='/student/account' element={<StudentAccountPage />}>
-//       <Route index element={<StudentAccountContent />} />
-//       <Route path='mock-tests' element={<MockTests />} />
-//       <Route path='courses' element={<StudentCourses />} />
-//       <Route path='profile' element={<StudentProfile />} />
-//     </Route>,
-
-//     <Route path='/admin/account' element={<AdminAccountPage />} />,
-
-//     <Route path='*' element={<PageNotFound />} />
-//   ]
-// )
 
 const routes = <Routes>
   <Route path='/' element={<Navigate to={"/home"} />} />
@@ -68,14 +38,24 @@ const routes = <Routes>
     </Route>
   </Route>
 
-  <Route path='/student/account' element={<StudentAccountPage />}>
+  <Route path='/student/account' 
+         element={
+          <ProtectedRoute>
+            <StudentAccountPage />
+          </ProtectedRoute>
+        }>
     <Route index element={<StudentAccountContent />} />
     <Route path='mock-tests' element={<MockTests />} />
     <Route path='courses' element={<StudentCourses />} />
     <Route path='profile' element={<StudentProfile />} />
   </Route>
 
-  <Route path='/admin/account' element={<AdminAccountPage />} />
+  <Route path='/admin/account' 
+         element={
+          <ProtectedRoute>
+            <AdminAccountPage />
+          </ProtectedRoute>} 
+  />
 
   <Route path='*' element={<PageNotFound />} />
 </Routes>
