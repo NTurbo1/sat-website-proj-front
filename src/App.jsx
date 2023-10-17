@@ -1,17 +1,16 @@
 import './App.css'
-import { useState } from 'react'
-import { AuthContext } from './components/appContext/authContext';
-import { RouterProvider } from 'react-router-dom';
-import { router } from './utils/router';
+import { BrowserRouter, Routes } from 'react-router-dom';
+import { routes } from './utils/router';
+import AuthProvider from './components/auth/authentication/AuthProvider';
 
 function App() {
 
-  const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem("jwtToken") !== null)
-
   return (
-    <AuthContext.Provider value={{isLoggedIn, setLoggedIn}}>
-      <RouterProvider router={router}></RouterProvider>
-    </AuthContext.Provider>
+    <BrowserRouter>
+      <AuthProvider>
+        {routes}
+      </AuthProvider>
+    </BrowserRouter>
   )
 }
 

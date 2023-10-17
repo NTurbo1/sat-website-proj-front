@@ -1,16 +1,13 @@
-import React, { useContext, useState } from "react";
-import jwtDecode from "jwt-decode";
-import { Navigate, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 import { apiEndpoints } from "../../../utils/apiEndpoints";
-import { AuthContext } from "../../appContext/authContext";
-import { userRoles } from "../../../utils/constants";
 import pageUrls from "../../../utils/pageUrls";
+import { useAuth } from "../../auth/authentication/AuthProvider";
 
 const LoginPage = () => {
 
-  const { isLoggedIn, setLoggedIn } = useContext(AuthContext)
+  const { isLoggedIn, handleLogIn } = useAuth()
   const [isAuthErrPopUpOpen, setAuthErrPopUpOpen] = useState(false)
-  const navigate = useNavigate()
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -27,8 +24,6 @@ const LoginPage = () => {
 
   const handleSubmit = async (event) => {
       event.preventDefault();
-      // for debugging
-      console.log("Submitted!!!");
 
       try {
           const response = await fetch(
@@ -47,33 +42,14 @@ const LoginPage = () => {
       
           if (response.ok) {
               const data = await response.json();
-              const decodedToken = jwtDecode(data.token);
-              const roles = decodedToken.roles;
 
-              localStorage.setItem("roles", roles)
-              localStorage.setItem("jwtToken", data.token);
-              localStorage.setItem("firstName", data.firstName)
-              localStorage.setItem("lastName", data.lastName)
-
-              //for debugging
-              console.log("Roles: " + roles);
-              console.log("JWT: " + data.token);
-              console.log("FirstName: " + data.firstName);
-              console.log("LastName: " + data.lastName);
-
-              setLoggedIn(true)
+              handleLogIn(data)
               setAuthErrPopUpOpen(false)
               setUsername("");
               setPassword("");
-
-              if (localStorage.getItem("roles").includes(userRoles.admin)) 
-                navigate(pageUrls.adminAccount)
-              else
-                navigate(pageUrls.home)
               
           } else {
               setAuthErrPopUpOpen(true)
-              setLoggedIn(false)
               console.error("Failed to authenticate:", response.statusText);
           }
 

@@ -1,32 +1,41 @@
-import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { defaultProfileImageBase64, userRoles } from '../../../utils/constants'
-import { AuthContext } from '../../appContext/authContext'
-import pageUrls from '../../../utils/pageUrls'
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { defaultProfileImageBase64, userRoles } from '../../../utils/constants';
+import pageUrls from '../../../utils/pageUrls';
+import { useAuth } from '../../auth/authentication/AuthProvider';
 
 const ProfileDropDown = () => {
 
-  const { setLoggedIn } = useContext(AuthContext)
-  console.log('Profile setLoggedIn: ' + setLoggedIn);
+  const { handleLogOut } = useAuth();
+  const navigate = useNavigate()
 
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleLogout = () => {
-    setLoggedIn(false)
-    localStorage.removeItem('jwtToken')
-  }
+  const closeDropdownOnOutsideClick = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('click', closeDropdownOnOutsideClick);
+    return () => {
+      window.removeEventListener('click', closeDropdownOnOutsideClick);
+    };
+  }, []);
 
   return (
-    <div className="relative inline-block text-left z-50">
+    <div className="relative inline-block text-left z-50" ref={dropdownRef}>
       <div>
         <button
-            onClick={toggleDropdown}
-            type="button"
-            className="text-white text-sm hover:text-gray-300 focus:outline-none focus:text-gray-300 flex items-center"
+          onClick={toggleDropdown}
+          type="button"
+          className="text-white text-sm hover:text-gray-300 focus:outline-none focus:text-gray-300 flex items-center"
         >
           <img
             src={defaultProfileImageBase64}
@@ -44,18 +53,20 @@ const ProfileDropDown = () => {
         <div className="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <div className="py-2">
             <Link
-                to={
-                  localStorage.getItem('roles').includes(userRoles.student) ? pageUrls.studentAccount
-                  : localStorage.getItem('roles').includes(userRoles.admin) ? pageUrls.adminAccount
-                  : '#' // should be fixed later
-                }
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              to={
+                localStorage.getItem('roles').includes(userRoles.student)
+                  ? pageUrls.studentAccount
+                  : localStorage.getItem('roles').includes(userRoles.admin)
+                  ? pageUrls.adminAccount
+                  : '#'
+              }
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               My Account
             </Link>
 
-            <button 
-              onClick={handleLogout}
+            <button
+              onClick={handleLogOut}
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full flex justify-start"
             >
               Log out
@@ -65,6 +76,6 @@ const ProfileDropDown = () => {
       )}
     </div>
   );
-}
+};
 
-export default ProfileDropDown
+export default ProfileDropDown;

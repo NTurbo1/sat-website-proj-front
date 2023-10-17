@@ -3,7 +3,7 @@ import ContactsPage from '../components/Home/navBarComponents/ContactsPage'
 import ServicesPage from '../components/Home/navBarComponents/ServicesPage'
 import LoginPage from '../components/Home/navBarComponents/LoginPage'
 import RegisterPage from '../components/Home/navBarComponents/RegisterPage'
-import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { Navigate, Route, Routes, createRoutesFromElements } from 'react-router-dom'
 import IntroToSAT from '../components/courses/IntroToSAT'
 import SatMath from '../components/courses/SatMath'
 import SatReading from '../components/courses/SatReading'
@@ -19,38 +19,67 @@ import Home from '../components/Home/Home'
 import AdminAccountPage from '../components/Admin/adminAccount/AdminAccountPage'
 
 
-const router = createBrowserRouter(
-  createRoutesFromElements([
-    <Route path='/' element={<Navigate to={"/home"} />}></Route>,
-    <Route path='home' element={<Home />}>
-      <Route index element={<HomeMainBody />}></Route>
-      <Route path='about' element={<AboutPage />}></Route>
-      <Route path='contacts' element={<ContactsPage />}></Route>
-      <Route path='services' element={<ServicesPage />}></Route>
-      <Route path='login' element={<LoginPage />}></Route>
-      <Route path='register' element={<RegisterPage />}></Route>
-      <Route path='introduction-to-sat' element={<IntroToSAT />}></Route>
-      <Route path='courses'>
-        <Route path='sat-math' element={<SatMath />}></Route>
-        <Route path='sat-reading' element={<SatReading />}></Route>
-        <Route path='sat-writing' element={<SatWriting />}></Route>
-      </Route>
-    </Route>,
+// const routes = createRoutesFromElements(
+//   [
+//     <Route path='/' element={<Navigate to={"/home"} />} />,
+//     <Route path='home' element={<Home />}>
+//       <Route index element={<HomeMainBody />} />
+//       <Route path='about' element={<AboutPage />} />
+//       <Route path='contacts' element={<ContactsPage />} />
+//       <Route path='services' element={<ServicesPage />} />
+//       <Route path='login' element={<LoginPage />} />
+//       <Route path='register' element={<RegisterPage />} />
+//       <Route path='introduction-to-sat' element={<IntroToSAT />} />
+//       <Route path='courses'>
+//         <Route path='sat-math' element={<SatMath />} />
+//         <Route path='sat-reading' element={<SatReading />} />
+//         <Route path='sat-writing' element={<SatWriting />} />
+//       </Route>
+//     </Route>,
 
-    <Route path='/student/account' element={<StudentAccountPage />}>
-      <Route index element={<StudentAccountContent />}></Route>
-      <Route path='mock-tests' element={<MockTests />}></Route>
-      <Route path='courses' element={<StudentCourses />}></Route>
-      <Route path='profile' element={<StudentProfile />}></Route>
-    </Route>,
+//     <Route path='/student/account' element={<StudentAccountPage />}>
+//       <Route index element={<StudentAccountContent />} />
+//       <Route path='mock-tests' element={<MockTests />} />
+//       <Route path='courses' element={<StudentCourses />} />
+//       <Route path='profile' element={<StudentProfile />} />
+//     </Route>,
 
-    <Route path='/admin/account' element={<AdminAccountPage />}></Route>,
+//     <Route path='/admin/account' element={<AdminAccountPage />} />,
 
-    <Route path='*' element={<PageNotFound />}></Route>
-  ]
-  ), { basename: "/sat-website-proj-front"}
-)
+//     <Route path='*' element={<PageNotFound />} />
+//   ]
+// )
+
+const routes = <Routes>
+  <Route path='/' element={<Navigate to={"/home"} />} />
+
+  <Route path='home' element={<Home />}>
+    <Route index element={<HomeMainBody />} />
+    <Route path='about' element={<AboutPage />} />
+    <Route path='contacts' element={<ContactsPage />} />
+    <Route path='services' element={<ServicesPage />} />
+    <Route path='login' element={<LoginPage />} />
+    <Route path='register' element={<RegisterPage />} />
+    <Route path='introduction-to-sat' element={<IntroToSAT />} />
+    <Route path='courses'>
+      <Route path='sat-math' element={<SatMath />} />
+      <Route path='sat-reading' element={<SatReading />} />
+      <Route path='sat-writing' element={<SatWriting />} />
+    </Route>
+  </Route>
+
+  <Route path='/student/account' element={<StudentAccountPage />}>
+    <Route index element={<StudentAccountContent />} />
+    <Route path='mock-tests' element={<MockTests />} />
+    <Route path='courses' element={<StudentCourses />} />
+    <Route path='profile' element={<StudentProfile />} />
+  </Route>
+
+  <Route path='/admin/account' element={<AdminAccountPage />} />
+
+  <Route path='*' element={<PageNotFound />} />
+</Routes>
 
 export {
-  router
+  routes
 }

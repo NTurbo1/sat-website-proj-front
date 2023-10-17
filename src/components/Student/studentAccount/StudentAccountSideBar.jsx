@@ -1,21 +1,14 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { defaultProfileImageBase64 } from '../../../utils/constants'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../appContext/authContext'
+import { useAuth } from '../../auth/authentication/AuthProvider'
+import pageUrls from '../../../utils/pageUrls'
 
 const StudentAccountSideBar = () => {
 
-  const { setLoggedIn } = useContext(AuthContext)
-  console.log("Student sidebar setLoggedIn: " + setLoggedIn);
-
+  const { handleLogOut } = useAuth();
   const navigate = useNavigate()
-
-  const handleLogout = () => {
-    setLoggedIn(false)
-    localStorage.removeItem('jwtToken')
-    navigate('/')
-  }
 
   return (
     <div className="w-1/5 bg-gray-800 text-gray-100">
@@ -35,7 +28,7 @@ const StudentAccountSideBar = () => {
             <li className="px-3 py-2 hover:bg-gray-700 cursor-pointer">Profile</li>
           </Link>
           <Link to={'courses'}>
-            <li className="px-3 py-2 hover:bg-gray-700 cursor-pointer">My courses</li>
+            <li className="px-3 py-2 hover:bg-gray-700 cursor-pointer">Enrolled courses</li>
           </Link>
           <Link to={'mock-tests'}>
             <li className="px-3 py-2 hover:bg-gray-700 cursor-pointer">Mock tests</li>
@@ -45,7 +38,7 @@ const StudentAccountSideBar = () => {
           </Link>
           <li className="px-3 py-2 hover:bg-gray-700 cursor-pointer text-red-400">
             <button 
-              onClick={handleLogout}
+              onClick={handleLogOut}
             >
               Log out
             </button>
