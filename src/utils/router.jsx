@@ -21,6 +21,7 @@ import ProtectedRoute from '../components/auth/ProtectedRoute'
 import AdminAccountDashboard from '../components/Admin/adminAccount/AdminAccountDashboard'
 import Courses from '../components/Admin/adminAccount/Courses';
 import AdminProfile from '../components/Admin/adminAccount/AdminProfile';
+import AllStudents from '../components/Admin/adminAccount/students/AllStudents'
 
 
 const routes = <Routes>
@@ -65,7 +66,8 @@ const routes = <Routes>
         }>
     <Route path='dashboard' element={<AdminAccountDashboard />} />
     <Route path='courses' element={<Courses />} />
-    <Route path='profile' element={<AdminProfile />} /> 
+    <Route path='profile' element={<AdminProfile />} />
+    <Route path='students' element={<AllStudents />} /> 
   </Route>
 
   <Route path='*' element={<PageNotFound />} />

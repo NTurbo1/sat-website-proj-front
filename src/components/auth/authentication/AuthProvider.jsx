@@ -77,10 +77,12 @@ const AuthProvider = ({ children }) => {
         localStorage.removeItem("jwtToken");
         localStorage.removeItem("firstName");
         localStorage.removeItem("lastName");
-        localStorage.removeItem("roles")
+        localStorage.removeItem("roles");
         setLoggedIn(false);
 
-        navigate(pageUrls.home)
+        navigate(pageUrls.login);
+
+        return true;
         
       } else {
         console.error("Failed to logout:", response.statusText);

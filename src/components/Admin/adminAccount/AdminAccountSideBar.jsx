@@ -31,6 +31,9 @@ const AdminAccountSideBar = () => {
           <Link to={pageUrls.courses}>
             <li className="px-3 py-2 hover:bg-gray-700 cursor-pointer">Courses</li>
           </Link>
+          <Link to={pageUrls.allStudents}>
+            <li className="px-3 py-2 hover:bg-gray-700 cursor-pointer">All students</li>
+          </Link>
           <Link to={pageUrls.home}>
             <li className="px-3 py-2 hover:bg-gray-700 cursor-pointer text-blue-400">Home</li>
           </Link>

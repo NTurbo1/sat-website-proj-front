@@ -21,6 +21,7 @@ const pageUrls = {
   adminDashboard: "/admin/account/dashboard",
   courses: "/admin/account/courses",
   adminProfile: "/admin/account/profile",
+  allStudents: "/admin/account/students"
 }
 
 export default pageUrls
