@@ -4,7 +4,8 @@ const apiAuthRoot = apiRoot + "/auth"
 
 const apiEndpoints = {
     "authenticate": apiAuthRoot + "/authenticate",
-    "register": apiAuthRoot + "/register"
+    "register": apiAuthRoot + "/register",
+    "logout": apiAuthRoot + "/logout"
 }
 
 export {

@@ -11,7 +11,6 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  // returns true when response is 200, false otherwise or an error
   const handleLogIn = async (username, password) => {
 
     try {
@@ -60,14 +59,37 @@ const AuthProvider = ({ children }) => {
     }
   }
 
-  const handleLogOut = () => { // should send logout request to the backend later
-    localStorage.removeItem("jwtToken");
-    localStorage.removeItem("firstName");
-    localStorage.removeItem("lastName");
-    localStorage.removeItem("roles")
-    setLoggedIn(false);
+  const handleLogOut = async () => { 
 
-    navigate(pageUrls.home)
+    try {
+      const response = await fetch(
+        apiEndpoints.logout,
+        {
+          method: "POST",
+          headers: {
+            "Authorization": "Bearer " + localStorage.getItem("jwtToken"),
+          },
+        }
+      );
+
+      if (response.ok) {
+
+        localStorage.removeItem("jwtToken");
+        localStorage.removeItem("firstName");
+        localStorage.removeItem("lastName");
+        localStorage.removeItem("roles")
+        setLoggedIn(false);
+
+        navigate(pageUrls.home)
+        
+      } else {
+        console.error("Failed to logout:", response.statusText);
+        return false;
+      }
+
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
   }
 
   const value = {

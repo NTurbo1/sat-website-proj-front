@@ -31,11 +31,11 @@ const LoginPage = () => {
     try {
       const loginSuccess = await handleLogIn(username, password)
       if (loginSuccess) {
-        setAuthErrPopUpOpen(true);
+        setAuthErrPopUpOpen(false);
         setUsername("");
         setPassword("");
       } else {
-        setAuthErrPopUpOpen(false);
+        setAuthErrPopUpOpen(true);
       }
     } catch (error) {
       authErrorText = "An error happened in the server :("

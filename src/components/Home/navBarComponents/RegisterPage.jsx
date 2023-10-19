@@ -62,8 +62,6 @@ const RegisterPage = () => {
           );
       
           if (response.ok) {
-              const data = await response.json();
-              localStorage.setItem("jwtToken", data.token);
               setRegisterSuccess(registrationState.success)
           } else {
               setRegisterSuccess(registrationState.error)
