@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AccountContent = () => {
+const StudentAccountDashboard = () => {
   return (
     <div className="w-3/4 p-10">
       {/* Your user-specific content goes here */}
@@ -12,4 +12,4 @@ const AccountContent = () => {
   )
 }
 
-export default AccountContent
+export default StudentAccountDashboard

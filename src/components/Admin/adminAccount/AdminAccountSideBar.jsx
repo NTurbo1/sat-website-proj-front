@@ -1,14 +1,12 @@
 import React from 'react'
 import { defaultProfileImageBase64 } from '../../../utils/constants'
 import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../auth/authentication/AuthProvider'
 import pageUrls from '../../../utils/pageUrls'
 
-const StudentAccountSideBar = () => {
+const AdminAccountSideBar = () => {
 
   const { handleLogOut } = useAuth();
-  const navigate = useNavigate()
 
   return (
     <div className="w-1/5 bg-gray-800 text-gray-100">
@@ -16,25 +14,22 @@ const StudentAccountSideBar = () => {
         <div className="flex items-center space-x-4 p-2">
           <img
             className="w-10 h-10 rounded-full object-cover"
-            src={defaultProfileImageBase64} // The user can set their own pictures later
-            alt="User Avatar"
+            src={defaultProfileImageBase64} // The admin can set their own pictures later
+            alt="Admin Avatar"
           />
           <span className="text-lg font-semibold">
             {`${localStorage.getItem('firstName')} ${localStorage.getItem('lastName')}`}
           </span>
         </div>
         <ul className="mt-6">
-          <Link to={pageUrls.studentDashboard}>
+          <Link to={pageUrls.adminDashboard}>
             <li className="px-3 py-2 hover:bg-gray-700 cursor-pointer">Dashboard</li>
           </Link>
-          <Link to={pageUrls.studentProfile}>
+          <Link to={pageUrls.adminProfile}>
             <li className="px-3 py-2 hover:bg-gray-700 cursor-pointer">Profile</li>
           </Link>
-          <Link to={pageUrls.studentEnrolledCourses}>
-            <li className="px-3 py-2 hover:bg-gray-700 cursor-pointer">Enrolled courses</li>
-          </Link>
-          <Link to={pageUrls.studentMockTests}>
-            <li className="px-3 py-2 hover:bg-gray-700 cursor-pointer">Mock tests</li>
+          <Link to={pageUrls.courses}>
+            <li className="px-3 py-2 hover:bg-gray-700 cursor-pointer">Courses</li>
           </Link>
           <Link to={pageUrls.home}>
             <li className="px-3 py-2 hover:bg-gray-700 cursor-pointer text-blue-400">Home</li>
@@ -52,4 +47,4 @@ const StudentAccountSideBar = () => {
   )
 }
 
-export default StudentAccountSideBar
+export default AdminAccountSideBar

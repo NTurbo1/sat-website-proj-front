@@ -3,7 +3,7 @@ import ContactsPage from '../components/Home/navBarComponents/ContactsPage'
 import ServicesPage from '../components/Home/navBarComponents/ServicesPage'
 import LoginPage from '../components/Home/navBarComponents/LoginPage'
 import RegisterPage from '../components/Home/navBarComponents/RegisterPage'
-import { Navigate, Route, Routes, createRoutesFromElements } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import IntroToSAT from '../components/courses/IntroToSAT'
 import SatMath from '../components/courses/SatMath'
 import SatReading from '../components/courses/SatReading'
@@ -11,19 +11,22 @@ import SatWriting from '../components/courses/SatWriting'
 import HomeMainBody from '../components/Home/HomeMain/HomeMainBody'
 import PageNotFound from '../components/errorComponents/PageNotFound'
 import StudentAccountPage from '../components/Student/studentAccount/StudentAccountPage'
-import StudentAccountContent from '../components/Student/studentAccount/StudentAccountContent'
+import StudentAccountDashboard from '../components/Student/studentAccount/StudentAccountDashboard'
 import MockTests from '../components/Student/studentAccount/MockTests'
 import StudentCourses from '../components/Student/studentAccount/StudentCourses'
 import StudentProfile from '../components/Student/studentAccount/StudentProfile'
 import Home from '../components/Home/Home'
 import AdminAccountPage from '../components/Admin/adminAccount/AdminAccountPage'
 import ProtectedRoute from '../components/auth/ProtectedRoute'
+import AdminAccountDashboard from '../components/Admin/adminAccount/AdminAccountDashboard'
+import Courses from '../components/Admin/adminAccount/Courses';
+import AdminProfile from '../components/Admin/adminAccount/AdminProfile';
 
 
 const routes = <Routes>
   <Route path='/' element={<Navigate to={"/home"} />} />
 
-  <Route path='home' element={<Home />}>
+  <Route path='/home' element={<Home />}>
     <Route index element={<HomeMainBody />} />
     <Route path='about' element={<AboutPage />} />
     <Route path='contacts' element={<ContactsPage />} />
@@ -38,24 +41,32 @@ const routes = <Routes>
     </Route>
   </Route>
 
+  <Route path='/student/account' element={<Navigate to={"/student/account/dashboard"}/>}/>
+
   <Route path='/student/account' 
          element={
           <ProtectedRoute>
             <StudentAccountPage />
           </ProtectedRoute>
         }>
-    <Route index element={<StudentAccountContent />} />
+    <Route path='dashboard' element={<StudentAccountDashboard />} />
     <Route path='mock-tests' element={<MockTests />} />
     <Route path='courses' element={<StudentCourses />} />
     <Route path='profile' element={<StudentProfile />} />
   </Route>
 
+  <Route path='/admin/account' element={<Navigate to={"/admin/account/dashboard"}/>}/>
+
   <Route path='/admin/account' 
-         element={
+        element={
           <ProtectedRoute>
             <AdminAccountPage />
-          </ProtectedRoute>} 
-  />
+          </ProtectedRoute>
+        }>
+    <Route path='dashboard' element={<AdminAccountDashboard />} />
+    <Route path='courses' element={<Courses />} />
+    <Route path='profile' element={<AdminProfile />} /> 
+  </Route>
 
   <Route path='*' element={<PageNotFound />} />
 </Routes>

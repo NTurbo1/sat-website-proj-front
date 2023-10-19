@@ -10,11 +10,17 @@ const pageUrls = {
   satMathCourses: "/home/courses/sat-math",
   satWritingCourses: "/home/courses/sat-writing",
   satReadingCourses: "/home/courses/sat-reading",
+
   studentAccount: "/student/account",
-  mockTests: "/student/account/mock-tests",
+  studentDashboard: "/student/account/dashboard",
+  studentMockTests: "/student/account/mock-tests",
   studentEnrolledCourses: "/student/account/courses",
   studentProfile: "/student/account/profile",
-  adminAccount: "/admin/account"
+
+  adminAccount: "/admin/account",
+  adminDashboard: "/admin/account/dashboard",
+  courses: "/admin/account/courses",
+  adminProfile: "/admin/account/profile",
 }
 
 export default pageUrls
