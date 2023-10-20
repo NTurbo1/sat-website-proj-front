@@ -1,10 +1,10 @@
 import { useContext, useState } from "react"
-import { AuthContext } from "../../appContext/authContext"
+import { AuthContext } from "../appContext/authContext"
 import { useLocation, useNavigate } from "react-router-dom"
-import pageUrls from "../../../utils/pageUrls"
-import { userRoles } from "../../../utils/constants"
+import pageUrls from "../../utils/pageUrls"
+import { userRoles } from "../../utils/constants"
 import jwtDecode from "jwt-decode";
-import { apiEndpoints } from "../../../utils/apiEndpoints"
+import { apiEndpoints } from "../../utils/apiEndpoints"
 
 const AuthProvider = ({ children }) => {
   const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem("jwtToken") !== null)
@@ -97,33 +97,66 @@ const AuthProvider = ({ children }) => {
   const checkJwtTokenExpiration = () => {
     const jwtToken = localStorage.getItem("jwtToken");
     
-    if (jwtToken === null) setLoggedIn(false);
+    if (jwtToken === null) {
+      setLoggedIn(false);
+      return false;
+    }
 
     try {
       const currentTime = Date.now() / 1000; // Convert to seconds
       const decodedToken = jwtDecode(jwtToken);
 
-      console.log("jwtToken: " + jwtToken);
-      console.log("decodedToken: " + decodedToken);
-      console.log("exp: " + decodedToken.exp);
-
       if (decodedToken.exp < currentTime) { // Jwt token is expired
         localStorage.removeItem("jwtToken");
         setLoggedIn(false);
+        return false;
       }
+
+      return true;
+
     } catch(error) {
 
       console.error("Invalid token specified:", error);
       localStorage.removeItem("jwtToken");
       setLoggedIn(false);
+
+      return false;
     }
   };
+
+  const checkAdminAuthorization = () => {
+    // called after checkJwtTokenExpiration => jwtToken is valid 
+    // and exists in localStorage
+    const jwtToken = localStorage.getItem("jwtToken");
+    const decodedToken = jwtDecode(jwtToken);
+
+    if (decodedToken.roles.includes(userRoles.admin)) {
+      return true;
+    }
+
+    return false;
+  }
+
+  const checkStudentAuthorization = () => {
+    // called after checkJwtTokenExpiration => jwtToken is valid 
+    // and exists in localStorage
+    const jwtToken = localStorage.getItem("jwtToken");
+    const decodedToken = jwtDecode(jwtToken);
+
+    if (decodedToken.roles.includes(userRoles.student)) {
+      return true;
+    }
+
+    return false;
+  }
 
   const value = {
     isLoggedIn,
     handleLogIn,
     handleLogOut,
-    checkJwtTokenExpiration
+    checkJwtTokenExpiration,
+    checkAdminAuthorization,
+    checkStudentAuthorization
   }
 
   return (

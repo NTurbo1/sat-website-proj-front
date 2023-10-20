@@ -1,9 +1,9 @@
 import React from 'react'
-import { useAuth } from './authentication/AuthProvider'
+import { useAuth } from '../AuthProvider'
 import { Navigate, useLocation } from 'react-router-dom'
-import pageUrls from '../../utils/pageUrls'
+import pageUrls from '../../../utils/pageUrls'
 
-const ProtectedRoute = ({ children }) => {
+const AuthenticatedRoute = ({ children }) => {
 
   const { isLoggedIn, checkJwtTokenExpiration } = useAuth()
   const location = useLocation()
@@ -17,4 +17,4 @@ const ProtectedRoute = ({ children }) => {
   )
 }
 
-export default ProtectedRoute
+export default AuthenticatedRoute

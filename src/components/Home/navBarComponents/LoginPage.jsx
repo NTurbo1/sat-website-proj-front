@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { apiEndpoints } from "../../../utils/apiEndpoints";
 import pageUrls from "../../../utils/pageUrls";
-import { useAuth } from "../../auth/authentication/AuthProvider";
+import { useAuth } from "../../auth/AuthProvider";
 
 const LoginPage = () => {
 

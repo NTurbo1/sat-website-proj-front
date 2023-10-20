@@ -2,7 +2,7 @@ import React from 'react'
 import { defaultProfileImageBase64 } from '../../../utils/constants'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../../auth/authentication/AuthProvider'
+import { useAuth } from '../../auth/AuthProvider'
 import pageUrls from '../../../utils/pageUrls'
 
 const StudentAccountSideBar = () => {

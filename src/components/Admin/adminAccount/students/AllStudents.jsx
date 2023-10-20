@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useAuth } from '../../../auth/authentication/AuthProvider';
+import { useAuth } from '../../../auth/AuthProvider';
 import StudentUpdateDropDown from './StudentUpdateDropDown';
 import { handleRetrieveAllStudents } from './StudentCRUD';
 

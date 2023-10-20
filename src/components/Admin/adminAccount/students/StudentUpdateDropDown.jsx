@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { handleDelete } from "./StudentCRUD";
-import { useAuth } from "../../../auth/authentication/AuthProvider";
+import { useAuth } from "../../../auth/AuthProvider";
 import { handleRetrieveAllStudents } from "./StudentCRUD";
 
 const StudentUpdateDropDown = ({ user, setStudents }) => {

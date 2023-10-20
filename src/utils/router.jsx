@@ -17,11 +17,13 @@ import StudentCourses from '../components/Student/studentAccount/StudentCourses'
 import StudentProfile from '../components/Student/studentAccount/StudentProfile'
 import Home from '../components/Home/Home'
 import AdminAccountPage from '../components/Admin/adminAccount/AdminAccountPage'
-import ProtectedRoute from '../components/auth/ProtectedRoute'
+import AuthenticatedRoute from '../components/auth/authentication/AuthenticatedRoute'
 import AdminAccountDashboard from '../components/Admin/adminAccount/AdminAccountDashboard'
 import AllCourses from '../components/Admin/adminAccount/courses/AllCourses';
 import AdminProfile from '../components/Admin/adminAccount/adminProfile/AdminProfile';
 import AllStudents from '../components/Admin/adminAccount/students/AllStudents'
+import AdminAuthorized from '../components/auth/authorization/AdminAuthorized'
+import StudentAuthorized from '../components/auth/authorization/StudentAuthorized'
 
 
 const routes = <Routes>
@@ -42,28 +44,30 @@ const routes = <Routes>
     </Route>
   </Route>
 
-  <Route path='/student/account' element={<Navigate to={"/student/account/dashboard"}/>}/>
-
   <Route path='/student/account' 
          element={
-          <ProtectedRoute>
-            <StudentAccountPage />
-          </ProtectedRoute>
+          <AuthenticatedRoute>
+            <StudentAuthorized>
+              <StudentAccountPage />
+            </StudentAuthorized>
+          </AuthenticatedRoute>
         }>
+    <Route path='/student/account' element={<Navigate to={"/student/account/dashboard"}/>}/>
     <Route path='dashboard' element={<StudentAccountDashboard />} />
     <Route path='mock-tests' element={<MockTests />} />
     <Route path='courses' element={<StudentCourses />} />
     <Route path='profile' element={<StudentProfile />} />
   </Route>
 
-  <Route path='/admin/account' element={<Navigate to={"/admin/account/dashboard"}/>}/>
-
   <Route path='/admin/account' 
         element={
-          <ProtectedRoute>
-            <AdminAccountPage />
-          </ProtectedRoute>
+          <AuthenticatedRoute>
+            <AdminAuthorized>
+              <AdminAccountPage />
+            </AdminAuthorized>
+          </AuthenticatedRoute>
         }>
+    <Route path='/admin/account' element={<Navigate to={"/admin/account/dashboard"}/>}/>
     <Route path='dashboard' element={<AdminAccountDashboard />} />
     <Route path='courses' element={<AllCourses />} />
     <Route path='profile' element={<AdminProfile />} />
