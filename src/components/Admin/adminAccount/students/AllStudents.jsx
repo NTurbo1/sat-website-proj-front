@@ -1,56 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { apiEndpoints } from '../../../../utils/apiEndpoints';
 import { useAuth } from '../../../auth/authentication/AuthProvider';
 import StudentUpdateDropDown from './StudentUpdateDropDown';
+import { handleRetrieveAllStudents } from './StudentCRUD';
 
 const AllStudents = () => {
 
   const [students, setStudents] = useState([]);
   const { handleLogOut } = useAuth();
 
-  const getAllStudents = async () => {
-
-    try {
-      const response = await fetch(
-        apiEndpoints.allStudents,
-        {
-          method: "GET",
-          headers: {
-            "Authorization": "Bearer " + localStorage.getItem("jwtToken"),
-          },
-        }
-      ); 
-
-      if (response.ok) {
-        const data = await response.json();
-        return data;
-
-      } else {
-        console.log("response status: " + response.status)
-        console.error("Failed to retrieve all students: " + response.statusText)
-        if (response.status === 403) handleLogOut();
-        return [];
-      }
-
-    } catch(error) {
-      console.error("An error occurred:", error);
-      return [];
-    }
-  }
-
   useEffect(() => {
-    const fetchStudents = async () => {
-      const studentsList = await getAllStudents();
+    const fetchAllStudents = async () => {
+      const studentsList = await handleRetrieveAllStudents(handleLogOut);
       setStudents(studentsList);
     };
 
-    fetchStudents();
+    fetchAllStudents();
   }, []);
 
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Students</h1>
-      <div className="shadow border-b border-gray-200 sm:rounded-lg">
+      <div className="shadow border-b border-gray-200 sm:rounded-lg flex justify-center items-center"
+            id='students-div'
+      >
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
@@ -82,6 +54,7 @@ const AllStudents = () => {
                 <td className="px-6 py-4 whitespace-nowrap">{
                   <StudentUpdateDropDown 
                     user={user}
+                    setStudents={setStudents}
                   />}
                 </td>
               </tr>

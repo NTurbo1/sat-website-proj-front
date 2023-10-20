@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { routes } from './utils/router';
 import AuthProvider from './components/auth/authentication/AuthProvider';
 
