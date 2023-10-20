@@ -4,10 +4,10 @@ import ServicesPage from '../components/Home/navBarComponents/ServicesPage'
 import LoginPage from '../components/Home/navBarComponents/LoginPage'
 import RegisterPage from '../components/Home/navBarComponents/RegisterPage'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import IntroToSAT from '../components/courses/IntroToSAT'
-import SatMath from '../components/courses/SatMath'
-import SatReading from '../components/courses/SatReading'
-import SatWriting from '../components/courses/SatWriting'
+import IntroToSAT from '../components/selfStudy/IntroToSAT'
+import SatMathSelfStudy from '../components/selfStudy/satMath/SatMathSelfStudy'
+import SatReadingSelfStudy from '../components/selfStudy/satReading/SatReadingSelfStudy'
+import SatWritingSelfStudy from '../components/selfStudy/satWriting/SatWritingSelfStudy'
 import HomeMainBody from '../components/Home/HomeMain/HomeMainBody'
 import PageNotFound from '../components/errorComponents/PageNotFound'
 import StudentAccountPage from '../components/Student/studentAccount/StudentAccountPage'
@@ -37,10 +37,10 @@ const routes = <Routes>
     <Route path='login' element={<LoginPage />} />
     <Route path='register' element={<RegisterPage />} />
     <Route path='introduction-to-sat' element={<IntroToSAT />} />
-    <Route path='courses'>
-      <Route path='sat-math' element={<SatMath />} />
-      <Route path='sat-reading' element={<SatReading />} />
-      <Route path='sat-writing' element={<SatWriting />} />
+    <Route path='self-study'>
+      <Route path='sat-math' element={<SatMathSelfStudy />} />
+      <Route path='sat-reading' element={<SatReadingSelfStudy />} />
+      <Route path='sat-writing' element={<SatWritingSelfStudy />} />
     </Route>
   </Route>
 

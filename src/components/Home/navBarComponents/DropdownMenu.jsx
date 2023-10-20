@@ -61,19 +61,19 @@ const DropdownMenu = () => {
               Introduction to the SAT
             </Link>
             <Link
-              to={pageUrls.satMathCourses}
+              to={pageUrls.selfStudySatMath}
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               SAT Math
             </Link>
             <Link
-              to={pageUrls.satReadingCourses}
+              to={pageUrls.selfStudySatReading}
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               SAT Reading
             </Link>
             <Link
-              to={pageUrls.satWritingCourses}
+              to={pageUrls.selfStudySatWriting}
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               SAT Writing
