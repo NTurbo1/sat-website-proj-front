@@ -19,8 +19,8 @@ import Home from '../components/Home/Home'
 import AdminAccountPage from '../components/Admin/adminAccount/AdminAccountPage'
 import ProtectedRoute from '../components/auth/ProtectedRoute'
 import AdminAccountDashboard from '../components/Admin/adminAccount/AdminAccountDashboard'
-import Courses from '../components/Admin/adminAccount/Courses';
-import AdminProfile from '../components/Admin/adminAccount/AdminProfile';
+import AllCourses from '../components/Admin/adminAccount/courses/AllCourses';
+import AdminProfile from '../components/Admin/adminAccount/adminProfile/AdminProfile';
 import AllStudents from '../components/Admin/adminAccount/students/AllStudents'
 
 
@@ -65,7 +65,7 @@ const routes = <Routes>
           </ProtectedRoute>
         }>
     <Route path='dashboard' element={<AdminAccountDashboard />} />
-    <Route path='courses' element={<Courses />} />
+    <Route path='courses' element={<AllCourses />} />
     <Route path='profile' element={<AdminProfile />} />
     <Route path='students' element={<AllStudents />} /> 
   </Route>

@@ -27,12 +27,6 @@ const StudentUpdateDropDown = ({ user, setStudents }) => {
     };
   }, []);
 
-  // const updateClick = (user) => {
-  //   // handleUpdate(user);
-
-  //   setUpdateModalOpen(true);
-  // };
-
   const deleteClick = async (userId) => {
     const isDeleted = await handleDelete(userId);
     if (isDeleted) {
@@ -47,7 +41,7 @@ const StudentUpdateDropDown = ({ user, setStudents }) => {
         <button
           onClick={toggleDropdown}
           type="button"
-          className="text-sm hover:text-gray-300 focus:outline-none focus:text-gray-300"
+          className="text-sm font-medium text-gray-700 bg-gray-300 rounded-md px-3 py-2 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
         >
           Actions
           <svg
@@ -70,30 +64,13 @@ const StudentUpdateDropDown = ({ user, setStudents }) => {
       </div>
       {isActionsOpen && (
         <div className="absolute z-50 mt-2 py-2 w-40 bg-white rounded-md shadow-lg">
-          {/* <button onClick={() => updateClick(user)} className="block px-4 py-2 text-sm text-gray-700 w-full text-left hover:bg-gray-100">
-            Update
-          </button> */}
-          <button onClick={() => deleteClick(user.userId)} className="block px-4 py-2 text-sm text-gray-700 w-full text-left hover:bg-gray-100">
+          <button onClick={() => deleteClick(user.userId)} 
+            className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-100 hover:text-red-800"
+          >
             Delete
           </button>
         </div>
       )}
-
-      {/* <ReactModal
-        isOpen = {isUpdateModalOpen}
-        onRequestClose={() => setUpdateModalOpen(false)}
-        className='w-96 h-96 bg-white rounded-xl p-5 flex flex-col items-center'
-        // parentSelector={() => document.getElementById('students-div')}
-      >
-        <button
-          onClick={() => setUpdateModalOpen(false)}
-          className='model-close-btn grow-0'
-        >
-          X
-        </button>
-
-        {updateModalContent}
-      </ReactModal> */}
     </div>
   );
 };

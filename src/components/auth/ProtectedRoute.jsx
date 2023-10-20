@@ -5,8 +5,10 @@ import pageUrls from '../../utils/pageUrls'
 
 const ProtectedRoute = ({ children }) => {
 
-  const { isLoggedIn } = useAuth()
+  const { isLoggedIn, checkJwtTokenExpiration } = useAuth()
   const location = useLocation()
+
+  checkJwtTokenExpiration();
 
   return isLoggedIn === true ? (
     children

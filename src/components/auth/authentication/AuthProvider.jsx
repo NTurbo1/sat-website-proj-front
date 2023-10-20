@@ -94,10 +94,36 @@ const AuthProvider = ({ children }) => {
     }
   }
 
+  const checkJwtTokenExpiration = () => {
+    const jwtToken = localStorage.getItem("jwtToken");
+    
+    if (jwtToken === null) setLoggedIn(false);
+
+    try {
+      const currentTime = Date.now() / 1000; // Convert to seconds
+      const decodedToken = jwtDecode(jwtToken);
+
+      console.log("jwtToken: " + jwtToken);
+      console.log("decodedToken: " + decodedToken);
+      console.log("exp: " + decodedToken.exp);
+
+      if (decodedToken.exp < currentTime) { // Jwt token is expired
+        localStorage.removeItem("jwtToken");
+        setLoggedIn(false);
+      }
+    } catch(error) {
+
+      console.error("Invalid token specified:", error);
+      localStorage.removeItem("jwtToken");
+      setLoggedIn(false);
+    }
+  };
+
   const value = {
     isLoggedIn,
     handleLogIn,
-    handleLogOut
+    handleLogOut,
+    checkJwtTokenExpiration
   }
 
   return (
