@@ -2,7 +2,7 @@ import React from 'react'
 import { useAuth } from '../AuthProvider';
 import PageNotFound from '../../errorComponents/PageNotFound';
 
-const StudentAuthorized = () => {
+const StudentAuthorized = ({ children }) => {
 
   const { checkStudentAuthorization } =  useAuth()
 

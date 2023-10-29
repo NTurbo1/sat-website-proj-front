@@ -37,6 +37,7 @@ const AuthProvider = ({ children }) => {
         localStorage.setItem("firstName", data.firstName);
         localStorage.setItem("lastName", data.lastName);
         localStorage.setItem("roles", roles);
+        localStorage.setItem("userId", data.userId);
         setLoggedIn(true);
 
         let defaultLoginRedirectUrl = pageUrls.home; // for students
@@ -74,10 +75,7 @@ const AuthProvider = ({ children }) => {
 
       if (response.ok) {
 
-        localStorage.removeItem("jwtToken");
-        localStorage.removeItem("firstName");
-        localStorage.removeItem("lastName");
-        localStorage.removeItem("roles");
+        cleanUpLocalStorage();
         setLoggedIn(false);
 
         navigate(pageUrls.login);
@@ -98,6 +96,7 @@ const AuthProvider = ({ children }) => {
     const jwtToken = localStorage.getItem("jwtToken");
     
     if (jwtToken === null) {
+      cleanUpLocalStorage();
       setLoggedIn(false);
       return false;
     }
@@ -107,7 +106,7 @@ const AuthProvider = ({ children }) => {
       const decodedToken = jwtDecode(jwtToken);
 
       if (decodedToken.exp < currentTime) { // Jwt token is expired
-        localStorage.removeItem("jwtToken");
+        cleanUpLocalStorage();
         setLoggedIn(false);
         return false;
       }
@@ -117,8 +116,8 @@ const AuthProvider = ({ children }) => {
     } catch(error) {
 
       console.error("Invalid token specified:", error);
-      localStorage.removeItem("jwtToken");
-      setLoggedIn(false);
+      cleanUpLocalStorage();
+      handleLogOut();
 
       return false;
     }
@@ -148,6 +147,14 @@ const AuthProvider = ({ children }) => {
     }
 
     return false;
+  }
+
+  const cleanUpLocalStorage = () => {
+    localStorage.removeItem("jwtToken");
+    localStorage.removeItem("firstName");
+    localStorage.removeItem("lastName");
+    localStorage.removeItem("roles");
+    localStorage.removeItem("userId");
   }
 
   const value = {

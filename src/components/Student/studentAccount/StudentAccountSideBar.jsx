@@ -11,7 +11,7 @@ const StudentAccountSideBar = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="w-1/5 bg-gray-800 text-gray-100">
+    <div className="w-1/5 bg-gray-800 text-gray-100 shrink-0">
       <div className="p-5">
         <div className="flex items-center space-x-4 p-2">
           <img

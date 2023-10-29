@@ -63,6 +63,7 @@ const LoginPage = () => {
           <div className="mb-4">
             <label htmlFor="username" className="block text-gray-600 font-semibold">Email</label>
             <input id="username"
+                type="email"
                 value={username}
                 onChange={handleUsernameChange} 
                 className="w-full border rounded py-2 px-3 text-gray-700 focus:outline-none focus:border-blue-400" 

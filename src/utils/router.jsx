@@ -11,7 +11,7 @@ import SatWritingSelfStudy from '../components/selfStudy/satWriting/SatWritingSe
 import HomeMainBody from '../components/Home/HomeMain/HomeMainBody'
 import PageNotFound from '../components/errorComponents/PageNotFound'
 import StudentAccountPage from '../components/Student/studentAccount/StudentAccountPage'
-import StudentAccountDashboard from '../components/Student/studentAccount/StudentAccountDashboard'
+import StudentAccountDashboard from '../components/Student/studentAccount/dashboard/StudentAccountDashboard'
 import MockTests from '../components/Student/studentAccount/MockTests'
 import StudentCourses from '../components/Student/studentAccount/StudentCourses'
 import StudentProfile from '../components/Student/studentAccount/StudentProfile'
@@ -24,54 +24,62 @@ import AdminProfile from '../components/Admin/adminAccount/adminProfile/AdminPro
 import AllStudents from '../components/Admin/adminAccount/students/AllStudents'
 import AdminAuthorized from '../components/auth/authorization/AdminAuthorized'
 import StudentAuthorized from '../components/auth/authorization/StudentAuthorized'
+import pageUrls from './pageUrls'
+import AvailableCourses from '../components/Home/navBarComponents/courses/AvailableCourses'
 
 
 const routes = <Routes>
-  <Route path='/' element={<Navigate to={"/home"} />} />
+  <Route path='/sat-website-proj-front'>
 
-  <Route path='/home' element={<Home />}>
-    <Route index element={<HomeMainBody />} />
-    <Route path='about' element={<AboutPage />} />
-    <Route path='contacts' element={<ContactsPage />} />
-    <Route path='services' element={<ServicesPage />} />
-    <Route path='login' element={<LoginPage />} />
-    <Route path='register' element={<RegisterPage />} />
-    <Route path='introduction-to-sat' element={<IntroToSAT />} />
-    <Route path='self-study'>
-      <Route path='sat-math' element={<SatMathSelfStudy />} />
-      <Route path='sat-reading' element={<SatReadingSelfStudy />} />
-      <Route path='sat-writing' element={<SatWritingSelfStudy />} />
+    <Route path='/sat-website-proj-front' 
+      element={<Navigate to={"/sat-website-proj-front/home"} />}
+    />
+
+    <Route path='home' element={<Home />}>
+      <Route index element={<HomeMainBody />} />
+      <Route path='about' element={<AboutPage />} />
+      <Route path='contacts' element={<ContactsPage />} />
+      <Route path='services' element={<ServicesPage />} />
+      <Route path='login' element={<LoginPage />} />
+      <Route path='register' element={<RegisterPage />} />
+      <Route path='courses' element={<AvailableCourses />} />
+      <Route path='self-study'>
+        <Route path='introduction-to-sat' element={<IntroToSAT />} />
+        <Route path='sat-math' element={<SatMathSelfStudy />} />
+        <Route path='sat-reading' element={<SatReadingSelfStudy />} />
+        <Route path='sat-writing' element={<SatWritingSelfStudy />} />
+      </Route>
     </Route>
-  </Route>
 
-  <Route path='/student/account' 
-         element={
-          <AuthenticatedRoute>
-            <StudentAuthorized>
-              <StudentAccountPage />
-            </StudentAuthorized>
-          </AuthenticatedRoute>
-        }>
-    <Route path='/student/account' element={<Navigate to={"/student/account/dashboard"}/>}/>
-    <Route path='dashboard' element={<StudentAccountDashboard />} />
-    <Route path='mock-tests' element={<MockTests />} />
-    <Route path='courses' element={<StudentCourses />} />
-    <Route path='profile' element={<StudentProfile />} />
-  </Route>
+    <Route path='student/account' 
+          element={
+            <AuthenticatedRoute>
+              <StudentAuthorized>
+                <StudentAccountPage />
+              </StudentAuthorized>
+            </AuthenticatedRoute>
+          }>
+      <Route path={pageUrls.studentAccount} element={<Navigate to={pageUrls.studentDashboard}/>}/>
+      <Route path='dashboard' element={<StudentAccountDashboard />} />
+      <Route path='mock-tests' element={<MockTests />} />
+      <Route path='courses' element={<StudentCourses />} />
+      <Route path='profile' element={<StudentProfile />} />
+    </Route>
 
-  <Route path='/admin/account' 
-        element={
-          <AuthenticatedRoute>
-            <AdminAuthorized>
-              <AdminAccountPage />
-            </AdminAuthorized>
-          </AuthenticatedRoute>
-        }>
-    <Route path='/admin/account' element={<Navigate to={"/admin/account/dashboard"}/>}/>
-    <Route path='dashboard' element={<AdminAccountDashboard />} />
-    <Route path='courses' element={<AllCourses />} />
-    <Route path='profile' element={<AdminProfile />} />
-    <Route path='students' element={<AllStudents />} /> 
+    <Route path='admin/account' 
+          element={
+            <AuthenticatedRoute>
+              <AdminAuthorized>
+                <AdminAccountPage />
+              </AdminAuthorized>
+            </AuthenticatedRoute>
+          }>
+      <Route path={pageUrls.adminAccount} element={<Navigate to={pageUrls.adminDashboard}/>}/>
+      <Route path='dashboard' element={<AdminAccountDashboard />} />
+      <Route path='courses' element={<AllCourses />} />
+      <Route path='profile' element={<AdminProfile />} />
+      <Route path='students' element={<AllStudents />} /> 
+    </Route>
   </Route>
 
   <Route path='*' element={<PageNotFound />} />

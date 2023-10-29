@@ -37,6 +37,9 @@ const NavLinks = () => {
       <Link to={pageUrls.about} className={navLinkClassName}>
           About me
       </Link>
+      <Link to={pageUrls.availableCourses} className={navLinkClassName}>
+        Courses
+      </Link>
       
       <DropdownMenu />
     </div>

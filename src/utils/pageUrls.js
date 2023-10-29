@@ -1,27 +1,29 @@
 const pageUrls = {
-  home: "/home",
-  about: "/home/about",
-  contacts: "/home/contacts",
-  services: "/home/services",
-  login: "/home/login",
-  register: "/home/register",
-  introductionToSat: "/home/introduction-to-sat",
-  selfStudy: "/home/self-study",
-  selfStudySatMath: "/home/self-study/sat-math",
-  selfStudySatWriting: "/home/self-study/sat-writing",
-  selfStudySatReading: "/home/self-study/sat-reading",
+  home: "/sat-website-proj-front/home",
 
-  studentAccount: "/student/account",
-  studentDashboard: "/student/account/dashboard",
-  studentMockTests: "/student/account/mock-tests",
-  studentEnrolledCourses: "/student/account/courses",
-  studentProfile: "/student/account/profile",
+  about: "/sat-website-proj-front/home/about",
+  contacts: "/sat-website-proj-front/home/contacts",
+  services: "/sat-website-proj-front/home/services",
+  login: "/sat-website-proj-front/home/login",
+  register: "/sat-website-proj-front/home/register",
+  availableCourses: "/sat-website-proj-front/home/courses",
+  selfStudy: "/sat-website-proj-front/home/self-study",
+  introductionToSat: "/sat-website-proj-front/home/self-study/introduction-to-sat",
+  selfStudySatMath: "/sat-website-proj-front/home/self-study/sat-math",
+  selfStudySatWriting: "/sat-website-proj-front/home/self-study/sat-writing",
+  selfStudySatReading: "/sat-website-proj-front/home/self-study/sat-reading",
 
-  adminAccount: "/admin/account",
-  adminDashboard: "/admin/account/dashboard",
-  courses: "/admin/account/courses",
-  adminProfile: "/admin/account/profile",
-  allStudents: "/admin/account/students"
+  studentAccount: "/sat-website-proj-front/student/account",
+  studentDashboard: "/sat-website-proj-front/student/account/dashboard",
+  studentMockTests: "/sat-website-proj-front/student/account/mock-tests",
+  studentEnrolledCourses: "/sat-website-proj-front/student/account/courses",
+  studentProfile: "/sat-website-proj-front/student/account/profile",
+
+  adminAccount: "/sat-website-proj-front/admin/account",
+  adminDashboard: "/sat-website-proj-front/admin/account/dashboard",
+  courses: "/sat-website-proj-front/admin/account/courses",
+  adminProfile: "/sat-website-proj-front/admin/account/profile",
+  allStudents: "/sat-website-proj-front/admin/account/students"
 }
 
 export default pageUrls
