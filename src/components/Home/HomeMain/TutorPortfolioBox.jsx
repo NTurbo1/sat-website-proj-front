@@ -1,5 +1,7 @@
 import React from 'react';
 import DefaultAvatarImage from '/images/default-avatar-image.png';
+import { Link, Navigate } from 'react-router-dom';
+import pageUrls from '../../../utils/pageUrls';
 
 const TutorPortfolioBox = ({tutorName}) => {
   return (
@@ -34,9 +36,11 @@ const TutorPortfolioBox = ({tutorName}) => {
           <p className="text-gray-700 mb-4">
             Enroll in Dr. {tutorName}'s courses to gain a comprehensive understanding of physics and unlock your true potential in the field.
           </p>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full">
+          <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full"
+            to={pageUrls.availableCourses}
+          >
             View Courses
-          </button>
+          </Link>
         </div>
 
       </div>

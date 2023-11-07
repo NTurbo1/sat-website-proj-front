@@ -1,5 +1,7 @@
 import React from 'react'
 import HomeMainBodyBgImage from '/images/young-friends-park.jpg'
+import { Link } from 'react-router-dom'
+import pageUrls from '../../../utils/pageUrls'
 
 const HomeWelcome = () => {
   return (
@@ -15,12 +17,12 @@ const HomeWelcome = () => {
         <p className="text-lg mb-8">
           Your pathway to SAT excellence starts here.
         </p>
-        <a
-          href="#courses" // Replace with the actual section ID you want to link to
+        <Link
+          to={pageUrls.availableCourses}
           className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-full text-lg transition duration-300 ease-in-out"
         >
           Explore Courses
-        </a>
+        </Link>
       </div>
     </div>
   )

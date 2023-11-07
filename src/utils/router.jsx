@@ -26,6 +26,7 @@ import AdminAuthorized from '../components/auth/authorization/AdminAuthorized'
 import StudentAuthorized from '../components/auth/authorization/StudentAuthorized'
 import pageUrls from './pageUrls'
 import AvailableCourses from '../components/Home/navBarComponents/courses/AvailableCourses'
+import NewCourseForm from '../components/Admin/adminAccount/courses/NewCourseForm'
 
 
 const routes = <Routes>
@@ -76,7 +77,10 @@ const routes = <Routes>
           }>
       <Route path={pageUrls.adminAccount} element={<Navigate to={pageUrls.adminDashboard}/>}/>
       <Route path='dashboard' element={<AdminAccountDashboard />} />
-      <Route path='courses' element={<AllCourses />} />
+      <Route exact path='courses'>
+        <Route index element={<AllCourses />}/>
+        <Route exact path='new-course' element={<NewCourseForm />}/>
+      </Route>
       <Route path='profile' element={<AdminProfile />} />
       <Route path='students' element={<AllStudents />} /> 
     </Route>

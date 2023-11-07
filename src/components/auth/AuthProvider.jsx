@@ -92,7 +92,7 @@ const AuthProvider = ({ children }) => {
     }
   }
 
-  const checkJwtTokenExpiration = () => {
+  const checkJwtTokenExpiration = async () => {
     const jwtToken = localStorage.getItem("jwtToken");
     
     if (jwtToken === null) {
@@ -106,7 +106,8 @@ const AuthProvider = ({ children }) => {
       const decodedToken = jwtDecode(jwtToken);
 
       if (decodedToken.exp < currentTime) { // Jwt token is expired
-        cleanUpLocalStorage();
+        // cleanUpLocalStorage();
+        const response = await handleLogOut();
         setLoggedIn(false);
         return false;
       }

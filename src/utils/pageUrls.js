@@ -22,6 +22,7 @@ const pageUrls = {
   adminAccount: "/sat-website-proj-front/admin/account",
   adminDashboard: "/sat-website-proj-front/admin/account/dashboard",
   courses: "/sat-website-proj-front/admin/account/courses",
+  newCourseForm: "/sat-website-proj-front/admin/account/courses/new-course",
   adminProfile: "/sat-website-proj-front/admin/account/profile",
   allStudents: "/sat-website-proj-front/admin/account/students"
 }

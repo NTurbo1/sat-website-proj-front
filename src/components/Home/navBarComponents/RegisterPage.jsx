@@ -146,7 +146,6 @@ const RegisterPage = () => {
           >
               <option value={""} disabled selected>Who are you?</option>
               <option value={userRoles.student}>Student</option>
-              <option value={userRoles.admin}>Admin</option>
           </select>
         </div>
 

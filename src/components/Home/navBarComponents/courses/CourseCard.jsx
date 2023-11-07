@@ -15,7 +15,7 @@ const CourseCard = ({ course }) => {
       <h2 className="text-xl font-bold mb-2">{course.title}</h2>
       <p className="text-gray-700 text-base mb-4">{course.description}</p>
       <div className="flex justify-between items-center">
-        <span className="text-gray-900 text-lg font-bold">{course.price}</span>
+        <span className="text-gray-900 text-lg font-bold">${course.price}</span>
 
         {
           checkJwtTokenExpiration() === false ? 

@@ -1,18 +1,18 @@
 import React from 'react';
 import CourseCard from './CourseCard';
 
-const courses = [
+const courses = [ //price in $
   {
     id: 1,
     title: 'Introduction to React',
     description: 'Learn the basics of React.js and build your first application.',
-    price: '$49.99',
+    price: '49.99', 
   },
   {
     id: 2,
     title: 'Advanced JavaScript',
     description: 'Master advanced JavaScript concepts and improve your coding skills.',
-    price: '$79.99',
+    price: '79.99',
   },
   // Add more courses as needed
 ];
