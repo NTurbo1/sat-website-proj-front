@@ -2,8 +2,7 @@ import { apiEndpoints } from "../apiEndpoints";
 
 export const STRIPE_API_KEY = import.meta.env.VITE_STRIPE_API_KEY;
 
-export const handlePayment = async (token, amount) => {
-  console.log(token);
+export const handlePayment = async (token, email, courseId) => {
   try {
     const response = await fetch(
       apiEndpoints.paymentCharge, 
@@ -12,7 +11,8 @@ export const handlePayment = async (token, amount) => {
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("jwtToken"),
           token: token.id,
-          amount: amount,
+          email: email,
+          courseId: courseId
         },
       }
     );

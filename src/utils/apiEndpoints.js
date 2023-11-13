@@ -5,13 +5,18 @@ const allStudents = apiRoot + "/students";
 const paymentRoot = apiRoot + "/payment"
 const allCourses = apiRoot + "/courses";
 
+const allStudentEnrolledCoursesURL = (studentId) => {
+  return allStudents + "/" + studentId + "/courses";
+}
+
 const apiEndpoints = {
     "authenticate": apiAuthRoot + "/authenticate",
     "register": apiAuthRoot + "/register",
     "logout": apiAuthRoot + "/logout",
     "allStudents": allStudents,
     "paymentCharge": paymentRoot + "/charge",
-    "allCourses": allCourses
+    "allCourses": allCourses,
+    "allStudentEnrolledCourses": allStudentEnrolledCoursesURL
 };
 
 export {
