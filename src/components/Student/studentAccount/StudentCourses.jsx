@@ -13,14 +13,14 @@ const StudentCourses = () => {
   const { handleLogOut } = useAuth();
 
   useEffect(() => {
-    const fetchAllActiveCourses = async () => { // should retrieve the user enrolled courses
+    const fetchAllStudentCourses = async () => { // should retrieve the user enrolled courses
       const retrievedCourses = await retrieveAllCoursesByStudentId(
         localStorage.getItem("userId")
       );
       setCourses(retrievedCourses);
     };
 
-    fetchAllActiveCourses();
+    fetchAllStudentCourses();
   }, []);
 
   return (

@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import DefaultCourseImage from '/images/default_course_img.jpg';
 import pageUrls from "../../../../utils/pageUrls";
+import { retrieveAllCoursesByStudentId } from "../../../Admin/adminAccount/courses/CRUD/CourseCRUD";
 
 const EnrolledCoursesSlider = () => {
+
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
+
+  useEffect(() => {
+    const fetchAllStudentCourses = async () => { // should retrieve the user enrolled courses
+      const retrievedCourses = await retrieveAllCoursesByStudentId(
+        localStorage.getItem("userId")
+      );
+      setEnrolledCourses(retrievedCourses);
+    };
+
+    fetchAllStudentCourses();
+  }, []);
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -23,40 +38,6 @@ const EnrolledCoursesSlider = () => {
       items: 1
     }
   };
-
-  const courses = [
-    {
-      name: "Course 1",
-      image: DefaultCourseImage,
-      link: "/course-1",
-    },
-    {
-      name: "Course 2",
-      image: DefaultCourseImage,
-      link: "/course-2",
-    },
-    {
-      name: "Course 3",
-      image: DefaultCourseImage,
-      link: "/course-3",
-    },
-    {
-      name: "Course 4",
-      image: DefaultCourseImage,
-      link: "/course-4",
-    },
-    {
-      name: "Course 5",
-      image: DefaultCourseImage,
-      link: "/course-5",
-    },
-    {
-      name: "Course 6",
-      image: DefaultCourseImage,
-      link: "/course-6",
-    },
-    // Add more courses here
-  ];
   
   return (
     <div className="bg-white rounded-lg shadow-lg p-6">
@@ -66,36 +47,16 @@ const EnrolledCoursesSlider = () => {
         containerClass="carousel-container"
         itemClass="carousel-item"
       >
-        {/* {courses.map((course, index) => {
-          return (
-            <div key={index} className="max-w-full sm:w-72 md:w-80 lg:w-96 px-5">
-              <div className="bg-gray-200 rounded-lg shadow-md p-4">
-                <a href={course.link}>
-                  <img src={course.image} alt={course.name} className="w-full h-40 object-cover rounded-lg mb-4" />
-                  <h3 className="text-lg font-bold mb-2">{course.name}</h3>
-                </a>
-              </div>
 
-              {index === courses.length - 1 && (
-              <a
-                href="/enrolled-courses"
-                className="absolute inset-0 flex items-center justify-center text-white text-xl font-bold transition-opacity opacity-0 group-hover:opacity-100"
-              >
-                View All Enrolled Courses
-              </a>
-            )}
-          </div>
-          )
-        })} */}
-
-{courses.map((course, index) => (
-          <div key={index} className={`max-w-full sm:w-72 md:w-80 lg:w-96 px-2 ${index === courses.length - 1 ? 'group' : ''}`}>
-            <div className={`bg-gray-200 rounded-lg shadow-md p-4 ${index === courses.length - 1 ? 'relative' : ''}`}>
+        {enrolledCourses.map((course, index) => (
+          <div key={index} className={`max-w-full sm:w-72 md:w-80 lg:w-96 px-2 ${index === enrolledCourses.length - 1 ? 'group' : ''}`}>
+            <div className={`bg-gray-200 rounded-lg shadow-md p-4 ${index === enrolledCourses.length - 1 ? 'relative' : ''}`}>
               <a href={course.link}>
-                <img src={course.image} alt={course.name} className="w-full h-40 object-cover rounded-lg mb-4" />
+                <img src={DefaultCourseImage} alt={course.name} className="w-full h-40 object-cover rounded-lg mb-4" />
                 <h3 className="text-lg font-bold mb-2">{course.name}</h3>
               </a>
-              {index === courses.length - 1 && (
+
+              {index === enrolledCourses.length - 1 && (
                 <div className="absolute inset-0 overflow-hidden">
                   <div className="h-full w-1/2 absolute right-0 top-0 bg-white opacity-70 shadow-lg">
                     <a
