@@ -25,8 +25,10 @@ import AllStudents from '../components/Admin/adminAccount/students/AllStudents'
 import AdminAuthorized from '../components/auth/authorization/AdminAuthorized'
 import StudentAuthorized from '../components/auth/authorization/StudentAuthorized'
 import pageUrls from './pageUrls'
-import AvailableCourses from '../components/Home/navBarComponents/courses/AvailableCourses'
+import AvailableCourses from '../components/Home/navBarComponents/courses/availableCourses/AvailableCourses'
 import NewCourseForm from '../components/Admin/adminAccount/courses/NewCourseForm'
+import AvailableCoursesProvider from '../components/Home/navBarComponents/courses/availableCourses/AvailableCoursesProvider'
+import AvailableCourse from '../components/Home/navBarComponents/courses/availableCourses/AvailableCourse'
 
 
 const routes = <Routes>
@@ -43,7 +45,10 @@ const routes = <Routes>
       <Route path='services' element={<ServicesPage />} />
       <Route path='login' element={<LoginPage />} />
       <Route path='register' element={<RegisterPage />} />
-      <Route path='courses' element={<AvailableCourses />} />
+      <Route path='courses' element={<AvailableCoursesProvider />}>
+        <Route index element={<AvailableCourses />} />
+        <Route path=':courseId' element={<AvailableCourse />} />
+      </Route>
       <Route path='self-study'>
         <Route path='introduction-to-sat' element={<IntroToSAT />} />
         <Route path='sat-math' element={<SatMathSelfStudy />} />
