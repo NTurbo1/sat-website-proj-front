@@ -1,3 +1,11 @@
+const returnCoursePageWithCourseId = (courseId) => {
+  return pageUrls.courses + "/course/" + courseId;
+}
+
+const returnUpdateCourseFormWithCourseId = (courseId) => {
+  return pageUrls.courses + "/update-course/" + courseId;
+}
+
 const pageUrls = {
   home: "/sat-website-proj-front/home",
 
@@ -22,7 +30,9 @@ const pageUrls = {
   adminAccount: "/sat-website-proj-front/admin/account",
   adminDashboard: "/sat-website-proj-front/admin/account/dashboard",
   courses: "/sat-website-proj-front/admin/account/courses",
+  coursePage: returnCoursePageWithCourseId,
   newCourseForm: "/sat-website-proj-front/admin/account/courses/new-course",
+  updateCourseForm: returnUpdateCourseFormWithCourseId,
   adminProfile: "/sat-website-proj-front/admin/account/profile",
   allStudents: "/sat-website-proj-front/admin/account/students"
 }

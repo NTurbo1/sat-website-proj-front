@@ -41,6 +41,45 @@ export const createCourse = async (course) => {
   }
 }
 
+export const updateCourse = async (course, courseId) => {
+  try {
+    const response = await fetch(
+      apiEndpoints.allCourses + "/" + courseId,
+      {
+        method: "PUT",
+        body: JSON.stringify(
+          {
+            name: course.name,
+            description: course.description,
+            type: course.type,
+            createdDate: course.createdDate,
+            status: course.status,
+            price: course.price
+          }
+        ),
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("jwtToken"),
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      }
+    );
+
+    if (response.ok) {
+      return true;
+
+    } else {
+      console.error("Failed to create course " + course.name);
+      console.error(response.statusText);
+
+      return false;
+    }
+
+  } catch(error) {
+    console.error("An error occured: " + error);
+    return false;
+  }
+}
+
 export const retrieveAllCourses = async (handleLogOut, status = null) => {
 
   let url = apiEndpoints.allCourses;
@@ -112,3 +151,33 @@ export const retrieveAllCoursesByStudentId = async (studentId) => {
     return [];
   }
 } 
+
+export const retrieveCourseByCourseId = async (courseId) => {
+
+  try {
+    const response = await fetch(
+      apiEndpoints.courseByCourseId(courseId),
+      {
+        method: "GET",
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("jwtToken"),
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      }
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+
+    } else {
+      console.error("Failed to retrieve course with id = " + courseId);
+      console.error(response.statusText);
+
+      return null;
+    }
+  } catch(error) {
+    console.error("An error occured " + error);
+    return null;
+  }
+}

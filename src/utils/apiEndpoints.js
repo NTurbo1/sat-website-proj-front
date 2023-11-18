@@ -9,6 +9,10 @@ const allStudentEnrolledCoursesURL = (studentId) => {
   return allStudents + "/" + studentId + "/courses";
 }
 
+const courseByCourseIdUrl = (courseId) => {
+  return allCourses + "/" + courseId;
+}
+
 const apiEndpoints = {
     "authenticate": apiAuthRoot + "/authenticate",
     "register": apiAuthRoot + "/register",
@@ -16,7 +20,8 @@ const apiEndpoints = {
     "allStudents": allStudents,
     "paymentCharge": paymentRoot + "/charge",
     "allCourses": allCourses,
-    "allStudentEnrolledCourses": allStudentEnrolledCoursesURL
+    "allStudentEnrolledCourses": allStudentEnrolledCoursesURL,
+    "courseByCourseId": courseByCourseIdUrl
 };
 
 export {

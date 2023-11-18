@@ -30,6 +30,8 @@ import NewCourseForm from '../components/Admin/adminAccount/courses/NewCourseFor
 import AvailableCoursesProvider from '../components/Home/navBarComponents/courses/availableCourses/AvailableCoursesProvider'
 import AvailableCourse from '../components/Home/navBarComponents/courses/availableCourses/AvailableCourse'
 import AllCoursesPage from '../components/Admin/adminAccount/courses/AllCoursesPage'
+import CoursePage from '../components/Admin/adminAccount/courses/coursePage/CoursePage'
+import UpdateCourseForm from '../components/Admin/adminAccount/courses/coursePage/UpdateCourseForm'
 
 
 const routes = <Routes>
@@ -98,6 +100,8 @@ const routes = <Routes>
   }>
     <Route index element={<AllCourses />}/>
     <Route exact path='new-course' element={<NewCourseForm />}/>
+    <Route path='update-course/:courseId' element={<UpdateCourseForm />} />
+    <Route path='course/:courseId' element={<CoursePage />}/>
   </Route>
 
   <Route path='*' element={<PageNotFound />} />

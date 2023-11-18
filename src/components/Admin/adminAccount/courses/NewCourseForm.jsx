@@ -27,7 +27,7 @@ const NewCourseForm = () => {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen w-4/5 bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen w-screen bg-gray-100">
       <div className="bg-white p-8 m-10 rounded shadow-lg w-96">
 
         <h2 className="text-2xl font-bold mb-4 text-center">Create New Course</h2>
