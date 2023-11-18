@@ -11,5 +11,7 @@ export const courseType = {
   ninethGradeMath: "9th Grade Mathematics",
   tenthGradeMath: "10th Grade Mathematics",
   eleventhGradeMath: "11th Grade Mathematics",
-  generalEnglish: "General English"
+  generalEnglish: "General English",
+  ielts: "IELTS Training",
+  satSubject: "SAT Subject"
 }

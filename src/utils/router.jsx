@@ -29,6 +29,7 @@ import AvailableCourses from '../components/Home/navBarComponents/courses/availa
 import NewCourseForm from '../components/Admin/adminAccount/courses/NewCourseForm'
 import AvailableCoursesProvider from '../components/Home/navBarComponents/courses/availableCourses/AvailableCoursesProvider'
 import AvailableCourse from '../components/Home/navBarComponents/courses/availableCourses/AvailableCourse'
+import AllCoursesPage from '../components/Admin/adminAccount/courses/AllCoursesPage'
 
 
 const routes = <Routes>
@@ -82,13 +83,21 @@ const routes = <Routes>
           }>
       <Route path={pageUrls.adminAccount} element={<Navigate to={pageUrls.adminDashboard}/>}/>
       <Route path='dashboard' element={<AdminAccountDashboard />} />
-      <Route exact path='courses'>
-        <Route index element={<AllCourses />}/>
-        <Route exact path='new-course' element={<NewCourseForm />}/>
-      </Route>
+      {/* <Route path='courses' element={<AllCoursesPage />} /> */}
       <Route path='profile' element={<AdminProfile />} />
       <Route path='students' element={<AllStudents />} /> 
     </Route>
+  </Route>
+
+  <Route exact path={pageUrls.courses} element={
+    <AuthenticatedRoute>
+      <AdminAuthorized>
+        <AllCoursesPage />
+      </AdminAuthorized>
+    </AuthenticatedRoute>
+  }>
+    <Route index element={<AllCourses />}/>
+    <Route exact path='new-course' element={<NewCourseForm />}/>
   </Route>
 
   <Route path='*' element={<PageNotFound />} />

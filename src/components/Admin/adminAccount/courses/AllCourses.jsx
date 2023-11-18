@@ -22,23 +22,23 @@ const AllCourses = () => {
   }, []);
 
   return (
-    <div className='w-4/5'>
+    <div className='w-screen'>
       {
         <Outlet />
           &&
-        <div className="container mx-auto p-4">
-          <h2 className="text-3xl font-bold text-center mb-4">Courses</h2>
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-center pb-4 pt-4">Courses</h2>
 
-          <div className="flex pl-4 pb-4">
+          <div className="flex justify-center pb-5">
             <Link 
               to={pageUrls.newCourseForm}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-sm"
             >
               Add Course
             </Link>
           </div>
 
-          <div className="flex flex-wrap gap-5 px-10">
+          <div className="flex flex-wrap justify-center gap-5 pb-8">
             {courses.map((course, index) => (
               <CourseCard course={course} key={index}/>
             ))}
