@@ -6,6 +6,14 @@ const returnUpdateCourseFormWithCourseId = (courseId) => {
   return pageUrls.courses + "/update-course/" + courseId;
 }
 
+const returnCourseSectionByCourseIdAndCourseSectionId = (courseId, courseSectionId) => {
+  return returnCoursePageWithCourseId(courseId) + "/course-section/" + courseSectionId;
+}
+
+const returnNewCourseSectionForm = (courseId) => {
+  return returnCoursePageWithCourseId(courseId) + "/course-sections/new-course-section";
+}
+
 const pageUrls = {
   home: "/sat-website-proj-front/home",
 
@@ -29,12 +37,14 @@ const pageUrls = {
 
   adminAccount: "/sat-website-proj-front/admin/account",
   adminDashboard: "/sat-website-proj-front/admin/account/dashboard",
+  adminProfile: "/sat-website-proj-front/admin/account/profile",
+  allStudents: "/sat-website-proj-front/admin/account/students",
   courses: "/sat-website-proj-front/admin/account/courses",
   coursePage: returnCoursePageWithCourseId,
   newCourseForm: "/sat-website-proj-front/admin/account/courses/new-course",
   updateCourseForm: returnUpdateCourseFormWithCourseId,
-  adminProfile: "/sat-website-proj-front/admin/account/profile",
-  allStudents: "/sat-website-proj-front/admin/account/students"
+  courseSectionPage: returnCourseSectionByCourseIdAndCourseSectionId,
+  newCourseSectionForm: returnNewCourseSectionForm
 }
 
 export default pageUrls

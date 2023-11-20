@@ -13,6 +13,14 @@ const courseByCourseIdUrl = (courseId) => {
   return allCourses + "/" + courseId;
 }
 
+const courseSectionsByCourseIdURL = (courseId) => {
+  return courseByCourseIdUrl(courseId) + "/course-sections";
+}
+
+const courseSectionByCourseIdAndCourseSectionIdURL = (courseId, courseSectionId) => {
+  return courseSectionsByCourseIdURL(courseId) + "/" + courseSectionId;
+}
+
 const apiEndpoints = {
     "authenticate": apiAuthRoot + "/authenticate",
     "register": apiAuthRoot + "/register",
@@ -21,7 +29,9 @@ const apiEndpoints = {
     "paymentCharge": paymentRoot + "/charge",
     "allCourses": allCourses,
     "allStudentEnrolledCourses": allStudentEnrolledCoursesURL,
-    "courseByCourseId": courseByCourseIdUrl
+    "courseByCourseId": courseByCourseIdUrl,
+    "courseSectionsByCourseId": courseSectionsByCourseIdURL,
+    "courseSectionByCourseIdAndCourseSectionId": courseSectionByCourseIdAndCourseSectionIdURL
 };
 
 export {

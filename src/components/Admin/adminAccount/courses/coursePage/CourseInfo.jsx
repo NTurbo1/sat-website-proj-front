@@ -1,8 +1,21 @@
 import React from 'react'
 import pageUrls from '../../../../../utils/pageUrls'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { deleteCourse } from '../CRUD/CourseCRUD'
 
 const CourseInfo = ({ course }) => {
+
+  const navigate = useNavigate();
+
+  const handleDeleteCourse = async () => {
+    const isDeleted = await deleteCourse(course.id);
+    if (isDeleted) {
+      navigate(pageUrls.courses);
+    } else {
+      // handle properly later
+      alert("There was an error deleting course with id = " + course.id);
+    }
+  }
 
   return (
     <div className="bg-white shadow-md rounded px-8 py-6 mb-8">
@@ -45,7 +58,7 @@ const CourseInfo = ({ course }) => {
         </Link>
         <button
           className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => {}}
+          onClick={handleDeleteCourse}
         >
           Delete Course
         </button>
