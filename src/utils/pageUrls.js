@@ -14,6 +14,11 @@ const returnNewCourseSectionForm = (courseId) => {
   return returnCoursePageWithCourseId(courseId) + "/course-sections/new-course-section";
 }
 
+const returnUpdateCourseSectionForm = (courseId, courseSectionId) => {
+  return returnCoursePageWithCourseId(courseId) + "/course-sections/" +
+    courseSectionId + "/update-course-section";
+}
+
 const pageUrls = {
   home: "/sat-website-proj-front/home",
 
@@ -44,7 +49,8 @@ const pageUrls = {
   newCourseForm: "/sat-website-proj-front/admin/account/courses/new-course",
   updateCourseForm: returnUpdateCourseFormWithCourseId,
   courseSectionPage: returnCourseSectionByCourseIdAndCourseSectionId,
-  newCourseSectionForm: returnNewCourseSectionForm
+  newCourseSectionForm: returnNewCourseSectionForm,
+  updateCourseSectionForm: returnUpdateCourseSectionForm
 }
 
 export default pageUrls

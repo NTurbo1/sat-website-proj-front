@@ -1,26 +1,42 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { createCourseSection } from '../../CRUD/CourseSectionCRUD';
+import { updateCourseSection, retrieveCourseSectionByCourseIdAndCourseSectionId } from '../../CRUD/CourseSectionCRUD';
 import pageUrls from '../../../../../../utils/pageUrls';
 
-const NewCourseSectionForm = () => {
+const UpdateCourseSectionForm = () => {
   
-  const [newCourseSection, setNewCourseSection] = useState(
+  const [updatedCourseSection, setUpdatedCourseSection] = useState(
     {
       name: "",
       description: ""
     }
   );
 
-  const { courseId } = useParams();
+  const { courseId, courseSectionId } = useParams();
 
   const navigate = useNavigate();
 
-  const handleCreateCourseSection = async () => {
-    const isCreated = await createCourseSection(courseId, newCourseSection);
+  useEffect(() => {
+    const fetchCourseSectionByCourseIdAndCourseSectionId = 
+      async (courseId, courseSectionId) => {
+        const retrievedCourseSection = 
+          await retrieveCourseSectionByCourseIdAndCourseSectionId(
+            courseId, courseSectionId);
 
-    if (isCreated) {
+        setUpdatedCourseSection({
+          name: retrievedCourseSection.name,
+          description: retrievedCourseSection.description
+        });
+      };
+
+    fetchCourseSectionByCourseIdAndCourseSectionId(courseId, courseSectionId);
+  }, []);
+
+  const handleUpdateCourseSection = async () => {
+    const isUpdated = await updateCourseSection(
+      courseId, courseSectionId, updatedCourseSection);
+
+    if (isUpdated) {
       navigate(pageUrls.coursePage(courseId));
     }
   }
@@ -29,7 +45,7 @@ const NewCourseSectionForm = () => {
     <div className="flex items-center justify-center min-h-screen w-screen bg-gray-100">
       <div className="bg-white p-8 m-10 rounded shadow-lg w-96">
 
-        <h2 className="text-2xl font-bold mb-4 text-center">Create New Course Section</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center">Update Course Section</h2>
         <form>
 
           <div className="mb-4">
@@ -42,9 +58,9 @@ const NewCourseSectionForm = () => {
               id="new-course-section-name"
               type="text"
               placeholder="Enter course section name"
-              value={newCourseSection.name}
+              value={updatedCourseSection.name}
               onChange={(event) =>
-                setNewCourseSection({...newCourseSection, name: event.target.value})
+                setUpdatedCourseSection({...updatedCourseSection, name: event.target.value})
               }
             />
           </div>
@@ -59,9 +75,9 @@ const NewCourseSectionForm = () => {
               id="new-course-section-description"
               rows="3"
               placeholder="Enter course section description"
-              value={newCourseSection.description}
+              value={updatedCourseSection.description}
               onChange={(event) => {
-                setNewCourseSection({...newCourseSection, description: event.target.value});
+                setUpdatedCourseSection({...updatedCourseSection, description: event.target.value});
               }}
             ></textarea>
           </div>
@@ -70,9 +86,9 @@ const NewCourseSectionForm = () => {
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
-              onClick={handleCreateCourseSection}
+              onClick={handleUpdateCourseSection}
             >
-              Create course section
+              Update course section
             </button>
           </div>
 
@@ -82,4 +98,4 @@ const NewCourseSectionForm = () => {
   );
 }
 
-export default NewCourseSectionForm
+export default UpdateCourseSectionForm

@@ -16,6 +16,7 @@ import UpdateCourseForm from "../components/Admin/adminAccount/courses/coursePag
 import CoursePage from "../components/Admin/adminAccount/courses/coursePage/CoursePage";
 import NewCourseSectionForm from "../components/Admin/adminAccount/courses/coursePage/courseSection/NewCourseSectionForm";
 import CourseSectionPage from "../components/Admin/adminAccount/courses/coursePage/courseSection/CourseSectionPage";
+import UpdateCourseSectionForm from "../components/Admin/adminAccount/courses/coursePage/courseSection/UpdateCourseSectionForm";
 
 
 const adminRoute = 
@@ -48,6 +49,11 @@ const adminRoute =
     <Route path='course/:courseId' element={<CoursePage />} />
     <Route path='course/:courseId/course-sections/new-course-section'
       element={<NewCourseSectionForm />}
+    />
+    <Route 
+      path={'course/:courseId/course-sections/:courseSectionId' + 
+        '/update-course-section'} 
+      element={<UpdateCourseSectionForm />}   
     />
     <Route path='course/:courseId/course-section/:courseSectionId' 
       element={<CourseSectionPage />}

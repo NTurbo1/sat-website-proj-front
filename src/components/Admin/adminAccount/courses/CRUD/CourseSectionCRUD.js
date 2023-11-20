@@ -98,3 +98,74 @@ export const createCourseSection = async (courseId, courseSection) => {
     return false;
   }
 }
+
+export const updateCourseSection = async (
+  courseId, courseSectionId, courseSection) => {
+
+  try {
+    const response = await fetch(
+      apiEndpoints.courseSectionByCourseIdAndCourseSectionId(
+        courseId, courseSectionId),
+      {
+        method: "PUT",
+        body: JSON.stringify(
+          {
+            name: courseSection.name,
+            description: courseSection.description
+          }
+        ),
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("jwtToken"),
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      }
+    );
+
+    if (response.ok) {
+      return true;
+
+    } else {
+      console.error("Failed to update course section " + courseSection.name + 
+        "with course id = " + courseId);
+      console.error(response.statusText);
+
+      return false;
+    }
+
+  } catch(error) {
+    console.error("An error occured: " + error);
+    return false;
+  }
+}
+
+export const deleteCourseSection = async (courseId, courseSectionId) => {
+
+  try {
+    const response = await fetch(
+      apiEndpoints.courseSectionByCourseIdAndCourseSectionId(
+        courseId, courseSectionId),
+      {
+        method: "DELETE",
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("jwtToken"),
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      }
+    );
+
+    if (response.ok) {
+      return true;
+
+    } else {
+      console.error("Failed to delete course section with id = " + courseSectionId + 
+        "and with course id = " + courseId);
+      console.error(response.statusText);
+
+      return false;
+    }
+
+  } catch(error) {
+    console.error("An error occured: " + error);
+    return false;
+  }
+}
