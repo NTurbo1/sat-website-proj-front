@@ -37,7 +37,10 @@ const UpdateCourseSectionForm = () => {
       courseId, courseSectionId, updatedCourseSection);
 
     if (isUpdated) {
-      navigate(pageUrls.coursePage(courseId));
+      navigate(pageUrls.coursePageAdmin(courseId));
+    } else {
+      //handle properly later
+      alert("There was an error updating course section.");
     }
   }
 

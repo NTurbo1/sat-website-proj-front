@@ -21,7 +21,10 @@ const NewCourseSectionForm = () => {
     const isCreated = await createCourseSection(courseId, newCourseSection);
 
     if (isCreated) {
-      navigate(pageUrls.coursePage(courseId));
+      navigate(pageUrls.coursePageAdmin(courseId));
+    } else {
+      //handle properly later
+      alert("There was an error creating a course section.")
     }
   }
 

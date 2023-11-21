@@ -15,7 +15,7 @@ const CourseCard = ({ course }) => {
   }
 
   return (
-    <Link to={pageUrls.coursePage(course.id)}>
+    <Link to={pageUrls.coursePageAdmin(course.id)}>
       <div className="max-w-sm rounded overflow-hidden shadow-lg w-72">
         {/* <img className="w-full" src={course.image} alt={course.name} /> */}
         <div className="px-6 py-2">

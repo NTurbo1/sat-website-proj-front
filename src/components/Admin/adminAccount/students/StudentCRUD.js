@@ -1,4 +1,4 @@
-import { apiEndpoints } from "../../../../utils/apiEndpoints";
+import { apiEndpoints } from "../../../../utils/api/apiEndpoints";
 
 export const handleUpdate = async (user, handleLogOut) => {
 

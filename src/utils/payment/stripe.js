@@ -1,4 +1,4 @@
-import { apiEndpoints } from "../apiEndpoints";
+import { apiEndpoints } from "../api/apiEndpoints";
 
 export const STRIPE_API_KEY = import.meta.env.VITE_STRIPE_API_KEY;
 

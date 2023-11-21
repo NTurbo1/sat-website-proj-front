@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import PageNotFound from '../components/errorComponents/PageNotFound'
 import homeRoute from './homeRoute'
 import studentRoute from './studentRoute'
-import adminRoute from './adminRoute'
+import adminRoute from './adminRoutes/adminRoute'
 
 const routes = <Routes>
   <Route path='/sat-website-proj-front' 

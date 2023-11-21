@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { apiEndpoints } from "../../../utils/apiEndpoints";
+import { apiEndpoints } from "../../../utils/api/apiEndpoints";
 import { registrationState, userRoles } from "../../../utils/constants";
 import { Link } from "react-router-dom";
 import pageUrls from "../../../utils/pageUrls";

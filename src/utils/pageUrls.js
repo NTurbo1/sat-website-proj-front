@@ -1,23 +1,7 @@
-const returnCoursePageWithCourseId = (courseId) => {
-  return pageUrls.courses + "/course/" + courseId;
-}
-
-const returnUpdateCourseFormWithCourseId = (courseId) => {
-  return pageUrls.courses + "/update-course/" + courseId;
-}
-
-const returnCourseSectionByCourseIdAndCourseSectionId = (courseId, courseSectionId) => {
-  return returnCoursePageWithCourseId(courseId) + "/course-section/" + courseSectionId;
-}
-
-const returnNewCourseSectionForm = (courseId) => {
-  return returnCoursePageWithCourseId(courseId) + "/course-sections/new-course-section";
-}
-
-const returnUpdateCourseSectionForm = (courseId, courseSectionId) => {
-  return returnCoursePageWithCourseId(courseId) + "/course-sections/" +
-    courseSectionId + "/update-course-section";
-}
+import { coursePageWithCourseIdAdminPath, updateCourseFormWithCourseIdPath,
+  courseSectionByCourseIdAndCourseSectionIdAdminPath, 
+  newCourseSectionFormPath, updateCourseSectionFormPath, topicAdminPath, allTopicsByCourseIdAndCourseSectionIdAdminPath, newTopicFormPath, updateTopicFormPath } 
+  from "./dynamicAdminPageUrls"
 
 const pageUrls = {
   home: "/sat-website-proj-front/home",
@@ -45,12 +29,16 @@ const pageUrls = {
   adminProfile: "/sat-website-proj-front/admin/account/profile",
   allStudents: "/sat-website-proj-front/admin/account/students",
   courses: "/sat-website-proj-front/admin/account/courses",
-  coursePage: returnCoursePageWithCourseId,
+  coursePageAdmin: coursePageWithCourseIdAdminPath,
   newCourseForm: "/sat-website-proj-front/admin/account/courses/new-course",
-  updateCourseForm: returnUpdateCourseFormWithCourseId,
-  courseSectionPage: returnCourseSectionByCourseIdAndCourseSectionId,
-  newCourseSectionForm: returnNewCourseSectionForm,
-  updateCourseSectionForm: returnUpdateCourseSectionForm
+  updateCourseForm: updateCourseFormWithCourseIdPath,
+  courseSectionPageAdmin: courseSectionByCourseIdAndCourseSectionIdAdminPath,
+  newCourseSectionForm: newCourseSectionFormPath,
+  updateCourseSectionForm: updateCourseSectionFormPath,
+  topicPageAdmin: topicAdminPath,
+  newTopicForm: newTopicFormPath,
+  updateTopicForm: updateTopicFormPath,
+  topicsByCourseIdAndCourseSectionIdAdmin: allTopicsByCourseIdAndCourseSectionIdAdminPath
 }
 
 export default pageUrls

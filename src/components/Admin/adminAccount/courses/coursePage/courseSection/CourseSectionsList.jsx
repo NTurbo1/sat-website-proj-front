@@ -43,7 +43,7 @@ const CourseSectionsList = ({ courseId }) => {
             key={courseSection.id}
             className="bg-white px-4 py-2 rounded-lg shadow-md transition-transform transform hover:scale-105"
           >
-            <Link to={pageUrls.courseSectionPage(courseId, courseSection.id)}>
+            <Link to={pageUrls.courseSectionPageAdmin(courseId, courseSection.id)}>
               <div className="mb-1">
                 <h3 className="text-base font-medium">{courseSection.name}</h3>
               </div>

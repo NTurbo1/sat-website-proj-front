@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import pageUrls from "../../utils/pageUrls"
 import { userRoles } from "../../utils/constants"
 import jwtDecode from "jwt-decode";
-import { apiEndpoints } from "../../utils/apiEndpoints"
+import { apiEndpoints } from "../../utils/api/apiEndpoints"
 
 const AuthProvider = ({ children }) => {
   const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem("jwtToken") !== null)

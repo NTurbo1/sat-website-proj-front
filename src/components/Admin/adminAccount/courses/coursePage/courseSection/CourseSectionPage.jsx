@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useState, useEffect, createContext } from 'react';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { retrieveCourseSectionByCourseIdAndCourseSectionId } from '../../CRUD/CourseSectionCRUD';
+import TopicsSideBar from './topic/TopicsSideBar';
+import { retrieveAllTopicsByCourseIdAndCourseSectionId } from '../../CRUD/TopicCRUD';
+
+export const CourseSectionContext = createContext({});
 
 const CourseSectionPage = () => {
 
-  const [courseSection, setCourseSection] = useState("");
+  const [courseSection, setCourseSection] = useState({});
+  const [topics, setTopics] = useState([]);
+
   const { courseId, courseSectionId } = useParams();
   const navigate = useNavigate();
 
@@ -19,8 +25,28 @@ const CourseSectionPage = () => {
     fetchCourseSectionByCourseIdAndCourseSectionId(courseId, courseSectionId);
   }, []);
 
+  useEffect(() => {
+    const fetchAllTopicsByCourseIdAndCourseSectionId = async (courseId, courseSectionId) => {
+      const retrievedTopics = await retrieveAllTopicsByCourseIdAndCourseSectionId(
+        courseId, courseSectionId
+      );
+
+      setTopics(retrievedTopics);
+    }
+
+    fetchAllTopicsByCourseIdAndCourseSectionId(courseId, courseSectionId);
+  }, []);
+
   return (
-    <div>Course section name: {courseSection.name} with id = {courseSection.id}</div>
+    <CourseSectionContext.Provider value={{ 
+      courseSection, setCourseSection, topics, setTopics 
+    }}>
+      <div className='flex min-h-screen w-screen bg-gray-100'>
+        <TopicsSideBar />
+
+        <Outlet />
+      </div>
+    </CourseSectionContext.Provider>
   )
 }
 

@@ -1,4 +1,4 @@
-import { apiEndpoints } from "../../../../../utils/apiEndpoints";
+import { apiEndpoints } from "../../../../../utils/api/apiEndpoints";
 
 export const retrieveAllCourseSectionsByCourseId = async (courseId) => {
 
@@ -50,7 +50,8 @@ export const retrieveCourseSectionByCourseIdAndCourseSectionId =
       return data;
 
     } else {
-      console.error("Failed to retrieve all courseSections by course id = " + courseId + ".");
+      console.error("Failed to retrieve a courseSection by course id = " + courseId + 
+        " and course section id = " + courseSectionId);
       console.error(response.statusText);
 
       return null;
