@@ -47,12 +47,12 @@ const UpdateCourseForm = () => {
     }));
   };
 
-  const submitForm = () => {
+  const handleUpdateCourse = () => {
     if (updateCourse(formData, courseId)) {
-      navigate(pageUrls.coursePage(courseId));
+      navigate(pageUrls.coursePageAdmin(courseId));
     } else {
       // should deal with the failure properly later
-      navigate(pageUrls.coursePage(courseId));
+      alert("There was an updating a course with id = " + courseId);
     }
   }
 
@@ -164,7 +164,7 @@ const UpdateCourseForm = () => {
         <button
           type="button"
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none"
-          onClick={submitForm}
+          onClick={handleUpdateCourse}
         >
           Update Course
         </button>
