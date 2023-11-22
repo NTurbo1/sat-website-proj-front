@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import pageUrls from '../../../../utils/pageUrls/pageUrls';
-import { useAuth } from '../../../auth/AuthProvider';
+import { useAuth } from '../../../../auth/AuthProvider';
+import pageUrls from '../../../../../utils/pageUrls/pageUrls';
 
-const AdminAccountTopNavLinks = () => {
+const StudentAccountTopNavLinks = () => {
 
   const { handleLogOut } = useAuth();
 
@@ -11,17 +11,17 @@ const AdminAccountTopNavLinks = () => {
 
   return (
     <div className="flex gap-4 flex-wrap items-center">
-      <Link to={pageUrls.adminDashboard} className={navLinkClassName}>
+      <Link to={pageUrls.studentDashboard} className={navLinkClassName}>
         Dashboard
       </Link>
-      <Link to={pageUrls.adminProfile} className={navLinkClassName}>
+      <Link to={pageUrls.studentProfile} className={navLinkClassName}>
         Profile
       </Link>
-      <Link to={pageUrls.courses} className={navLinkClassName}>
-        Courses
+      <Link to={pageUrls.studentEnrolledCourses} className={navLinkClassName}>
+        Enrolled courses
       </Link>
-      <Link to={pageUrls.allStudents} className={navLinkClassName}>
-        All students
+      <Link to={pageUrls.studentMockTests} className={navLinkClassName}>
+        Mock tests
       </Link>
 
       <Link to={pageUrls.home} className={navLinkClassName}>
@@ -38,4 +38,4 @@ const AdminAccountTopNavLinks = () => {
   )
 }
 
-export default AdminAccountTopNavLinks
+export default StudentAccountTopNavLinks

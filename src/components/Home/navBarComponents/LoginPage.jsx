@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import { apiEndpoints } from "../../../utils/api/apiEndpoints";
-import pageUrls from "../../../utils/pageUrls";
+import { Navigate } from "react-router-dom";
+import pageUrls from "../../../utils/pageUrls/pageUrls";
 import { useAuth } from "../../auth/AuthProvider";
 
 const LoginPage = () => {

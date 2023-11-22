@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { updateCourseSection, retrieveCourseSectionByCourseIdAndCourseSectionId } from '../../CRUD/CourseSectionCRUD';
-import pageUrls from '../../../../../../utils/pageUrls';
+import pageUrls from '../../../../../../utils/pageUrls/pageUrls';
 
 const UpdateCourseSectionForm = () => {
   

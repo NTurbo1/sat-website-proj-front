@@ -13,7 +13,7 @@ import IntroToSAT from "../components/selfStudy/IntroToSAT";
 import SatMathSelfStudy from "../components/selfStudy/satMath/SatMathSelfStudy";
 import SatReadingSelfStudy from "../components/selfStudy/satReading/SatReadingSelfStudy";
 import SatWritingSelfStudy from "../components/selfStudy/satWriting/SatWritingSelfStudy";
-import pageUrls from "../utils/pageUrls";
+import pageUrls from "../utils/pageUrls/pageUrls";
 
 const homeRoute = 
 <Route path={pageUrls.home} element={<Home />}>

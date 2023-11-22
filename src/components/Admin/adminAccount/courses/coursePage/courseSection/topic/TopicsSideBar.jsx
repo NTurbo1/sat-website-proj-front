@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { deleteTopic, retrieveAllTopicsByCourseIdAndCourseSectionId } from '../../../CRUD/TopicCRUD';
 import { Link } from 'react-router-dom';
-import pageUrls from '../../../../../../../utils/pageUrls';
+import pageUrls from '../../../../../../../utils/pageUrls/pageUrls';
 import { CourseSectionContext } from '../CourseSectionPage';
 
 const TopicsSideBar = () => {
 
   const { topics, setTopics } = useContext(CourseSectionContext);
   const { courseId, courseSectionId } = useParams();
+
+  const navigate = useNavigate();
 
   const handleDeleteTopic = async (topic) => {
     const isDeleted = await deleteTopic(courseId, courseSectionId, topic.id);
@@ -17,6 +19,8 @@ const TopicsSideBar = () => {
       setTopics(topics => {
         return topics.filter(t => t.id !== topic.id);
       });
+
+      navigate(pageUrls.courseSectionPageAdmin(courseId, courseSectionId));
     } else {
       // properly deal with the failure later
       alert("There was an error deleting topic with id = " + topic.id);

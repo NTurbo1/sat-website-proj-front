@@ -6,7 +6,7 @@ import CourseBuyButtonBeforeLogIn from "../courseButtons/CourseBuyButtonBeforeLo
 import CourseEnrolledButton from "../courseButtons/CourseEnrolledButton";
 
 import defaultCourseImage from "/images/default_course_img.jpg";
-import pageUrls from "../../../../../utils/pageUrls";
+import pageUrls from "../../../../../utils/pageUrls/pageUrls";
 
 const AvailableCourseCard = ({ course, studentCourses }) => {
 

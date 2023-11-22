@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { retrieveCourseByCourseId, updateCourse } from '../CRUD/CourseCRUD';
 import { courseStatus, courseType } from '../CRUD/CourseConstants';
-import pageUrls from '../../../../../utils/pageUrls';
+import pageUrls from '../../../../../utils/pageUrls/pageUrls';
 
 const UpdateCourseForm = () => {
 

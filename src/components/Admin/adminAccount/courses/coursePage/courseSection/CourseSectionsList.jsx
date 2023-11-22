@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { deleteCourseSection, retrieveAllCourseSectionsByCourseId } from '../../CRUD/CourseSectionCRUD';
 import { Link, useNavigate } from 'react-router-dom';
-import pageUrls from '../../../../../../utils/pageUrls';
+import pageUrls from '../../../../../../utils/pageUrls/pageUrls';
 
 const CourseSectionsList = ({ courseId }) => {
 

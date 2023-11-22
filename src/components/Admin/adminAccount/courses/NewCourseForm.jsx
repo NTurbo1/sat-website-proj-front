@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { createCourse } from './CRUD/CourseCRUD';
 import { courseStatus, courseType } from './CRUD/CourseConstants';
 import { useNavigate } from 'react-router-dom';
-import pageUrls from '../../../../utils/pageUrls';
+import pageUrls from '../../../../utils/pageUrls/pageUrls';
 
 const NewCourseForm = () => {
 

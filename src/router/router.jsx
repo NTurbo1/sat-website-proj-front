@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import PageNotFound from '../components/errorComponents/PageNotFound'
 import homeRoute from './homeRoute'
-import studentRoute from './studentRoute'
+import studentRoute from './studentRoutes/studentRoute'
 import adminRoute from './adminRoutes/adminRoute'
 
 const routes = <Routes>

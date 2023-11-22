@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { defaultProfileImageBase64, userRoles } from '../../../utils/constants';
-import pageUrls from '../../../utils/pageUrls';
+import pageUrls from '../../../utils/pageUrls/pageUrls';
 import { useAuth } from '../../auth/AuthProvider';
 
 const ProfileDropDown = () => {

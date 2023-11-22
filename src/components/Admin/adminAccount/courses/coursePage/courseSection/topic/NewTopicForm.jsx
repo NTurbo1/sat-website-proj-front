@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { createTopic } from '../../../CRUD/TopicCRUD';
-import pageUrls from '../../../../../../../utils/pageUrls';
+import pageUrls from '../../../../../../../utils/pageUrls/pageUrls';
 import { CourseSectionContext } from '../CourseSectionPage';
 
 const NewTopicForm = () => {

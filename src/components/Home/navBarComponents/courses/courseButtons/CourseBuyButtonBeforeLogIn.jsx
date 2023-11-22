@@ -1,5 +1,5 @@
 import React from 'react'
-import pageUrls from '../../../../../utils/pageUrls';
+import pageUrls from '../../../../../utils/pageUrls/pageUrls';
 import { useNavigate } from 'react-router-dom';
 
 const CourseBuyButtonBeforeLogIn = () => {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { retrieveTopic } from '../../../CRUD/TopicCRUD';
+import { retrieveTopic } from '../../../../../../Admin/adminAccount/courses/CRUD/TopicCRUD';
 import { useParams } from 'react-router-dom';
-import TopicDescription from './TopicDescription';
+import StudentTopicDescription from './StudentTopicDescription';
 
-const TopicPage = () => {
+const StudentTopicPage = () => {
 
   const { courseId, courseSectionId, topicId } = useParams();
   const [topic, setTopic] = useState({});
@@ -24,15 +24,14 @@ const TopicPage = () => {
 
         <h2 className="text-2xl font-bold mb-4 text-center">{topic.name}</h2>
 
-        <TopicDescription topic={topic} />
+        <StudentTopicDescription topic={topic} />
 
         <div>
           {topic.text}
-          
         </div>
       </div>
     </div>
   )
 }
 
-export default TopicPage
+export default StudentTopicPage

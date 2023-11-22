@@ -1,7 +1,7 @@
 import React from 'react';
 import { courseStatus } from './CRUD/CourseConstants';
 import { Link } from 'react-router-dom';
-import pageUrls from '../../../../utils/pageUrls';
+import pageUrls from '../../../../utils/pageUrls/pageUrls';
 
 const CourseCard = ({ course }) => {
 

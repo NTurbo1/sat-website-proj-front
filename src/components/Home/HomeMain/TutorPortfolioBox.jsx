@@ -1,7 +1,7 @@
 import React from 'react';
 import DefaultAvatarImage from '/images/default-avatar-image.png';
 import { Link, Navigate } from 'react-router-dom';
-import pageUrls from '../../../utils/pageUrls';
+import pageUrls from '../../../utils/pageUrls/pageUrls';
 
 const TutorPortfolioBox = ({tutorName}) => {
   return (

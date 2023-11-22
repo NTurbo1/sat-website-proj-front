@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { AuthContext } from "../appContext/authContext"
 import { useLocation, useNavigate } from "react-router-dom"
-import pageUrls from "../../utils/pageUrls"
+import pageUrls from "../../utils/pageUrls/pageUrls"
 import { userRoles } from "../../utils/constants"
 import jwtDecode from "jwt-decode";
 import { apiEndpoints } from "../../utils/api/apiEndpoints"

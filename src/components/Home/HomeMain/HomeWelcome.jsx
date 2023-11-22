@@ -1,7 +1,7 @@
 import React from 'react'
 import HomeMainBodyBgImage from '/images/young-friends-park.jpg'
 import { Link } from 'react-router-dom'
-import pageUrls from '../../../utils/pageUrls'
+import pageUrls from '../../../utils/pageUrls/pageUrls'
 
 const HomeWelcome = () => {
   return (

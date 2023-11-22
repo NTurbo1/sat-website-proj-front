@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { createCourseSection } from '../../CRUD/CourseSectionCRUD';
-import pageUrls from '../../../../../../utils/pageUrls';
+import pageUrls from '../../../../../../utils/pageUrls/pageUrls';
 
 const NewCourseSectionForm = () => {
   

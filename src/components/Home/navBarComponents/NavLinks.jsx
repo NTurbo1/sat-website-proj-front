@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import { AuthContext } from '../../appContext/authContext'
 import { Link } from 'react-router-dom'
-import pageUrls from '../../../utils/pageUrls'
+import pageUrls from '../../../utils/pageUrls/pageUrls'
 import DropdownMenu from './DropdownMenu'
 
 const NavLinks = () => {

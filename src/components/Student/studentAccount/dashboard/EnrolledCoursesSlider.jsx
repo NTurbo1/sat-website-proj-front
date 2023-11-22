@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import DefaultCourseImage from '/images/default_course_img.jpg';
-import pageUrls from "../../../../utils/pageUrls";
+import pageUrls from "../../../../utils/pageUrls/pageUrls";
 import { retrieveAllCoursesByStudentId } from "../../../Admin/adminAccount/courses/CRUD/CourseCRUD";
 
 const EnrolledCoursesSlider = () => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import pageUrls from '../../../utils/pageUrls';
+import pageUrls from '../../../utils/pageUrls/pageUrls';
 
 const DropdownMenu = () => {
 

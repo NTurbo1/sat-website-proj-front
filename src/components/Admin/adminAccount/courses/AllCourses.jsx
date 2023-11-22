@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import pageUrls from '../../../../utils/pageUrls';
+import pageUrls from '../../../../utils/pageUrls/pageUrls';
 import { retrieveAllCourses } from './CRUD/CourseCRUD';
 import CourseCard from './CourseCard';
 import { useAuth } from '../../../auth/AuthProvider';

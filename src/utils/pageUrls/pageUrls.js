@@ -2,6 +2,7 @@ import { coursePageWithCourseIdAdminPath, updateCourseFormWithCourseIdPath,
   courseSectionByCourseIdAndCourseSectionIdAdminPath, 
   newCourseSectionFormPath, updateCourseSectionFormPath, topicAdminPath, allTopicsByCourseIdAndCourseSectionIdAdminPath, newTopicFormPath, updateTopicFormPath } 
   from "./dynamicAdminPageUrls"
+import { studentCourseSectionPagePath, studentEnrolledCoursePagePath, studentTopicPagePath } from "./dynamicStudentPageUrls"
 
 const pageUrls = {
   home: "/sat-website-proj-front/home",
@@ -23,6 +24,9 @@ const pageUrls = {
   studentMockTests: "/sat-website-proj-front/student/account/mock-tests",
   studentEnrolledCourses: "/sat-website-proj-front/student/account/courses",
   studentProfile: "/sat-website-proj-front/student/account/profile",
+  studentEnrolledCoursePage: studentEnrolledCoursePagePath,
+  studentCourseSectionPage: studentCourseSectionPagePath,
+  studentTopicPage: studentTopicPagePath,
 
   adminAccount: "/sat-website-proj-front/admin/account",
   adminDashboard: "/sat-website-proj-front/admin/account/dashboard",

@@ -1,5 +1,5 @@
 import { Route } from "react-router-dom";
-import pageUrls from "../../utils/pageUrls";
+import pageUrls from "../../utils/pageUrls/pageUrls";
 import { Navigate } from "react-router-dom";
 
 import AuthenticatedRoute from "../../components/auth/authentication/AuthenticatedRoute";

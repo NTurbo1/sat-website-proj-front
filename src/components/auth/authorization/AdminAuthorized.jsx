@@ -1,7 +1,5 @@
 import React from 'react'
 import { useAuth } from '../AuthProvider'
-import { Navigate } from 'react-router-dom';
-import pageUrls from '../../../utils/pageUrls';
 import PageNotFound from '../../errorComponents/PageNotFound';
 
 const AdminAuthorized = ({ children }) => {
