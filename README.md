@@ -41,9 +41,14 @@
 ---
 
 ## 📦 Features
-
-► INSERT-TEXT
 - **User login and logout pages**
+- **JSON Web Tokens based Authentication && Authorization**
+- **Admin and student account pages**
+- **Student management**
+- **Course management**
+- **Course enrollment**
+- **Payment process**
+- **Admin and student profiles**
 
 ---
 
