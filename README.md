@@ -26,7 +26,6 @@
 - [📖 Table of Contents](#-table-of-contents)
 - [📍 Overview](#-overview)
 - [📦 Features](#-features)
-- [📂 repository Structure](#-repository-structure)
 - [⚙️ Modules](#modules)
 
 ---
@@ -49,51 +48,6 @@
 - **Admin and student profiles**
 
 ---
-
-
-## 📂 Repository Structure
-
-```sh
-└── sat-website-proj-front/
-    ├── .eslintrc.cjs
-    ├── index.html
-    ├── package-lock.json
-    ├── package.json
-    ├── postcss.config.js
-    ├── public/
-    │   ├── images/
-    │   │   ├── social-media/
-    ├── src/
-    │   ├── App.css
-    │   ├── App.jsx
-    │   ├── components/
-    │   │   ├── Admin/
-    │   │   ├── Home/
-    │   │   ├── Student/
-    │   │   ├── appContext/
-    │   │   ├── auth/
-    │   │   ├── errorComponents/
-    │   │   └── selfStudy/
-    │   ├── index.css
-    │   ├── main.jsx
-    │   ├── router/
-    │   │   ├── adminRoutes/
-    │   │   ├── homeRoute.jsx
-    │   │   ├── router.jsx
-    │   │   └── studentRoutes/
-    │   └── utils/
-    │       ├── api/
-    │       ├── constants.jsx
-    │       ├── pageUrls/
-    │       ├── payment/
-    │       └── socialMediaLinks.js
-    ├── tailwind.config.js
-    └── vite.config.js
-
-```
-
----
-
 
 ## ⚙️ Modules
 
