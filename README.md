@@ -43,6 +43,7 @@
 ## 📦 Features
 
 ► INSERT-TEXT
+- **User login and logout pages**
 
 ---
 
