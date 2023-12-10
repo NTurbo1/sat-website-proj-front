@@ -33,7 +33,7 @@
 
 ## 📍 Overview
 
-► INSERT-TEXT
+Deployed at https://nturbo1.github.io/sat-website-proj-front.
 
 ---
 
